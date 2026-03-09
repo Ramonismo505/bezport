@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Drupal\ra_import_record\Entity;
 
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityChangedInterface;
 
 /**
  * Provides an interface defining a Ra Import Record entity.
  */
-interface RaImportRecordInterface extends ContentEntityInterface {
+interface RaImportRecordInterface extends ContentEntityInterface, EntityChangedInterface {
 
   /**
    * Gets the target entity type ID.
@@ -50,6 +51,19 @@ interface RaImportRecordInterface extends ContentEntityInterface {
    * Sets the creation timestamp.
    */
   public function setCreatedTime(int $timestamp): static;
+
+  /**
+   * Gets the changed timestamp.
+   */
+  public function getChangedTime(): int;
+
+  /**
+   * Sets the changed timestamp.
+   *
+   * @param int $timestamp
+   * The changed timestamp.
+   */
+  public function setChangedTime($timestamp): static;
 
   /**
    * Gets the description.

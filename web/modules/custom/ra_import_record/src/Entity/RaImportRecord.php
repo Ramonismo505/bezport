@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\Attribute\ContentEntityType;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Entity\EntityChangedTrait;
 
 /**
  * Defines the Ra Import Record entity.
@@ -23,6 +24,9 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   ],
 )]
 class RaImportRecord extends ContentEntityBase implements RaImportRecordInterface {
+
+  // Využijeme Trait z jádra pro automatickou obsluhu changed metod.
+  use EntityChangedTrait;
 
   /**
    * {@inheritdoc}
@@ -126,7 +130,12 @@ class RaImportRecord extends ContentEntityBase implements RaImportRecordInterfac
       ->setRequired(TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')
-      ->setLabel(new TranslatableMarkup('Created'));
+      ->setLabel(new TranslatableMarkup('Created'))
+      ->setDescription(new TranslatableMarkup('The time that the entity was created.'));
+
+    $fields['changed'] = BaseFieldDefinition::create('changed')
+      ->setLabel(new TranslatableMarkup('Changed'))
+      ->setDescription(new TranslatableMarkup('The time that the entity was last edited.'));
 
     $fields['description'] = BaseFieldDefinition::create('string_long')
       ->setLabel(new TranslatableMarkup('Description'))
