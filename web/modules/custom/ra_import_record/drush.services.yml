@@ -1,0 +1,6 @@
+services:
+  ra_import_record.commands:
+    class: Drupal\ra_import_record\Drush\Commands\RaImportCommands
+    arguments: ['@ra_import_record.manager', '@entity_type.manager']
+    tags:
+      - { name: drush.command }

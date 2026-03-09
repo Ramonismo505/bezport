@@ -7,6 +7,30 @@ use Drupal\node\NodeTypeInterface;
 use Drupal\taxonomy\VocabularyInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ra_import_record_help(string $route_name, RouteMatchInterface $route_match): ?string {
+  switch ($route_name) {
+    case 'help.page.ra_import_record':
+      $output = '<h3>' . t('O modulu') . '</h3>';
+      $output .= '<p>' . t('Modul Ra Import Record poskytuje odlehčenou databázovou entitu pro evidenci migrací a importů. Umožňuje uchovat informace o původu dat, čase importu a UUID cílových entit.') . '</p>';
+      
+      $output .= '<h3>' . t('Použití') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('1. Nastavení u typů obsahu a slovníků') . '</dt>';
+      $output .= '<dd>' . t('Uživatelé s oprávněním mohou na editační stránce typu obsahu (např. Article) nebo slovníku povolit UI pro manuální evidenci importů.') . '</dd>';
+      $output .= '<dt>' . t('2. Editace záznamů') . '</dt>';
+      $output .= '<dd>' . t('Redaktoři s oprávněním mohou na samotném formuláři uzlu či termínu manuálně zakládat nebo upravovat metadata o importu.') . '</dd>';
+      $output .= '<dt>' . t('3. Drush příkazy') . '</dt>';
+      $output .= '<dd>' . t('Pro hromadnou správu a rollback dat je k dispozici příkaz <code>drush raid</code>.') . '</dd>';
+      $output .= '</dl>';
+      return $output;
+  }
+  return NULL;
+}
 
 /**
  * Implements hook_form_FORM_ID_alter() for node_type_form.
