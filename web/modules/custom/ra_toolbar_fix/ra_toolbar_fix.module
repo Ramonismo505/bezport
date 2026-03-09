@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Drupal\Core\Cache\CacheableMetadata;
 
+
 /**
  * Implements hook_toolbar_alter().
  */
