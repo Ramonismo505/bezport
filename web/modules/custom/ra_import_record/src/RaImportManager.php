@@ -37,7 +37,9 @@ final class RaImportManager {
     /** @var \Drupal\ra_import_record\Entity\RaImportRecordInterface $record */
     $record = $this->entityTypeManager->getStorage('ra_import_record')->create([
       'target_entity_type' => $entity->getEntityTypeId(),
+      'target_entity_bundle' => $entity->bundle(),
       'target_entity_id' => $entity->id(),
+      'target_entity_uuid' => $entity->uuid(),
       'import_method' => $method,
       'description' => $description,
     ]);

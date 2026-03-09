@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeTypeInterface;
 use Drupal\taxonomy\VocabularyInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityChangedInterface;
 
 /**
  * Implements hook_form_FORM_ID_alter() for node_type_form.
@@ -20,7 +22,7 @@ function ra_import_record_form_node_type_form_alter(array &$form, FormStateInter
 
   $form['ra_import_record'] = [
     '#type' => 'details',
-    '#title' => t('Ra Import Record'),
+    '#title' => t('Záznam o importu'),
     '#group' => 'additional_settings',
   ];
 
@@ -55,8 +57,7 @@ function ra_import_record_form_taxonomy_vocabulary_form_alter(array &$form, Form
 
   $form['ra_import_record'] = [
     '#type' => 'details',
-    '#title' => t('Ra Import Record'),
-    '#open' => TRUE,
+    '#title' => t('Záznam o importu'),
     '#weight' => 10,
   ];
 
@@ -75,4 +76,198 @@ function ra_import_record_form_taxonomy_vocabulary_form_alter(array &$form, Form
  */
 function ra_import_record_form_taxonomy_vocabulary_form_builder(string $entity_type, VocabularyInterface $vocabulary, array &$form, FormStateInterface $form_state): void {
   $vocabulary->setThirdPartySetting('ra_import_record', 'enabled', $form_state->getValue('ra_import_record_enabled'));
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ra_import_record_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  $form_object = $form_state->getFormObject();
+  
+  // Zajímají nás pouze editační formuláře entit.
+  if (!($form_object instanceof \Drupal\Core\Entity\EntityFormInterface)) {
+    return;
+  }
+
+  $entity = $form_object->getEntity();
+  $entity_type_id = $entity->getEntityTypeId();
+
+  // Aplikujeme pouze na nody a termíny.
+  if (!in_array($entity_type_id, ['node', 'taxonomy_term'], TRUE)) {
+    return;
+  }
+
+  // Získáme config entitu (např. typ obsahu nebo slovník) pro kontrolu ThirdPartySettings.
+  $bundle_entity_type = $entity->getEntityType()->getBundleEntityType();
+  $bundle_entity = \Drupal::entityTypeManager()->getStorage($bundle_entity_type)->load($entity->bundle());
+
+  if (!$bundle_entity || !$bundle_entity->getThirdPartySetting('ra_import_record', 'enabled', FALSE)) {
+    return;
+  }
+
+  // Zjistíme, zda pro tuto entitu už záznam existuje.
+  $storage = \Drupal::entityTypeManager()->getStorage('ra_import_record');
+  $query = $storage->getQuery()
+    ->condition('target_entity_type', $entity_type_id)
+    ->condition('target_entity_id', $entity->id() ?? 0)
+    ->accessCheck(FALSE);
+  $record_ids = $query->execute();
+  
+  /** @var \Drupal\ra_import_record\Entity\RaImportRecordInterface|null $existing_record */
+  $existing_record = !empty($record_ids) ? $storage->load(reset($record_ids)) : NULL;
+  $has_record = $existing_record !== NULL;
+
+  // Vytvoříme fieldset pro formulář.
+  $form['ra_import_record_data'] = [
+    '#type' => 'details',
+    '#title' => t('Záznam o importu'),
+    '#group' => $entity_type_id === 'node' ? 'advanced' : '', // U nodů se zařadí do pravého sloupce.
+    '#weight' => 100,
+    '#tree' => TRUE,
+    '#open' => TRUE,
+    '#access' => \Drupal::currentUser()->hasPermission('manage entity import records'),
+  ];
+
+  // Checkbox s defaultním zaškrtnutím.
+  $form['ra_import_record_data']['create_record'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Vložit / Ponechat data o importu'),
+    '#default_value' => $has_record || $entity->isNew(),
+  ];
+
+  // Popisek, který se zobrazí jen když je checkbox zaškrtnutý.
+  $form['ra_import_record_data']['description'] = [
+    '#type' => 'textarea',
+    '#title' => t('Popis (Description)'),
+    '#default_value' => $has_record ? $existing_record->getDescription() : '',
+    '#states' => [
+      'visible' => [
+        ':input[name="ra_import_record_data[create_record]"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+
+  // Zobrazení read-only polí při editaci.
+  if ($has_record) {
+    $date_formatter = \Drupal::service('date.formatter');
+    $created = $date_formatter->format($existing_record->getCreatedTime(), 'short');
+    $changed = $date_formatter->format($existing_record->getChangedTime(), 'short');
+    $method = $existing_record->getImportMethod() === 'manual' ? t('Manuálně') : t('Hromadně');
+
+    $form['ra_import_record_data']['info'] = [
+      '#type' => 'item',
+      '#markup' => t('<strong>Metoda:</strong> @method<br><strong>Vytvořeno:</strong> @created<br><strong>Změněno:</strong> @changed', [
+        '@method' => $method,
+        '@created' => $created,
+        '@changed' => $changed,
+      ]),
+    ];
+  }
+
+  // Zaregistrujeme entity builder.
+  $form['#entity_builders'][] = 'ra_import_record_entity_builder';
+}
+
+/**
+ * Entity builder pro přesun hodnot z formuláře do objektu entity.
+ */
+function ra_import_record_entity_builder(string $entity_type, EntityInterface $entity, array &$form, FormStateInterface $form_state): void {
+  $values = $form_state->getValue('ra_import_record_data');
+  if ($values !== NULL) {
+    // Přidáme hodnoty jako dočasnou vlastnost (neprojevuje se v DB schématu cílové entity).
+    $entity->ra_import_record_values = $values;
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function ra_import_record_entity_insert(EntityInterface $entity): void {
+  _ra_import_record_process_entity_save($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function ra_import_record_entity_update(EntityInterface $entity): void {
+  _ra_import_record_process_entity_save($entity);
+}
+
+/**
+ * Společná logika pro vytvoření/úpravu/smazání záznamu při uložení nodu/termínu.
+ */
+function _ra_import_record_process_entity_save(EntityInterface $entity): void {
+  if (!in_array($entity->getEntityTypeId(), ['node', 'taxonomy_term'], TRUE)) {
+    return;
+  }
+
+  if (!isset($entity->ra_import_record_values)) {
+    return;
+  }
+
+  $values = $entity->ra_import_record_values;
+  $storage = \Drupal::entityTypeManager()->getStorage('ra_import_record');
+  
+  $query = $storage->getQuery()
+    ->condition('target_entity_type', $entity->getEntityTypeId())
+    ->condition('target_entity_id', $entity->id())
+    ->accessCheck(FALSE);
+  $record_ids = $query->execute();
+  
+  /** @var \Drupal\ra_import_record\Entity\RaImportRecordInterface|null $existing_record */
+  $existing_record = !empty($record_ids) ? $storage->load(reset($record_ids)) : NULL;
+
+  if (!empty($values['create_record'])) {
+    // Čas vytvoření/změny vezmeme z nadřazené entity, pokud to lze, jinak aktuální čas.
+    $created_time = $entity->hasField('created') ? (int) $entity->get('created')->value : \Drupal::time()->getRequestTime();
+    $changed_time = $entity instanceof EntityChangedInterface ? $entity->getChangedTime() : \Drupal::time()->getRequestTime();
+
+    if ($existing_record) {
+      $existing_record->setDescription($values['description'] ?? '');
+      // Nastavíme čas změny na čas změny nadřazené entity.
+      $existing_record->setChangedTime($changed_time);
+      $existing_record->save();
+    }
+    else {
+      $record = $storage->create([
+        'target_entity_type' => $entity->getEntityTypeId(),
+        'target_entity_bundle' => $entity->bundle(), // PŘIDÁNO
+        'target_entity_id' => $entity->id(),
+        'target_entity_uuid' => $entity->uuid(),     // PŘIDÁNO
+        'import_method' => 'manual',
+        'description' => $values['description'] ?? '',
+        'created' => $created_time,
+        'changed' => $changed_time,
+      ]);
+      $record->save();
+    }
+  }
+  else {
+    // Zrušeno zaškrtnutí - záznam smažeme, pokud existuje.
+    if ($existing_record) {
+      $existing_record->delete();
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ * Zajistí smazání RaImportRecord, pokud je smazána cílová entita (node/term).
+ */
+function ra_import_record_entity_delete(EntityInterface $entity): void {
+  if (!in_array($entity->getEntityTypeId(), ['node', 'taxonomy_term'], TRUE)) {
+    return;
+  }
+
+  $storage = \Drupal::entityTypeManager()->getStorage('ra_import_record');
+  $query = $storage->getQuery()
+    ->condition('target_entity_type', $entity->getEntityTypeId())
+    ->condition('target_entity_id', $entity->id())
+    ->accessCheck(FALSE);
+  $record_ids = $query->execute();
+
+  if (!empty($record_ids)) {
+    $records = $storage->loadMultiple($record_ids);
+    $storage->delete($records);
+  }
 }

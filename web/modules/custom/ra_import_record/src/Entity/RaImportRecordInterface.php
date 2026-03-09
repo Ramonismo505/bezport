@@ -75,4 +75,24 @@ interface RaImportRecordInterface extends ContentEntityInterface, EntityChangedI
    */
   public function setDescription(string $description): static;
 
+  /**
+   * Gets the target entity bundle.
+   */
+  public function getTargetEntityBundle(): string;
+
+  /**
+   * Sets the target entity bundle.
+   */
+  public function setTargetEntityBundle(string $bundle): static;
+
+  /**
+   * Gets the target entity UUID.
+   */
+  public function getTargetEntityUuid(): string;
+
+  /**
+   * Sets the target entity UUID.
+   */
+  public function setTargetEntityUuid(string $uuid): static;
+
 }

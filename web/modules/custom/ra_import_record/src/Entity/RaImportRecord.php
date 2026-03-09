@@ -106,6 +106,36 @@ class RaImportRecord extends ContentEntityBase implements RaImportRecordInterfac
   /**
    * {@inheritdoc}
    */
+  public function getTargetEntityBundle(): string {
+    return (string) $this->get('target_entity_bundle')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setTargetEntityBundle(string $bundle): static {
+    $this->set('target_entity_bundle', $bundle);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getTargetEntityUuid(): string {
+    return (string) $this->get('target_entity_uuid')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setTargetEntityUuid(string $uuid): static {
+    $this->set('target_entity_uuid', $uuid);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array {
     $fields = parent::baseFieldDefinitions($entity_type);
 
@@ -140,6 +170,19 @@ class RaImportRecord extends ContentEntityBase implements RaImportRecordInterfac
     $fields['description'] = BaseFieldDefinition::create('string_long')
       ->setLabel(new TranslatableMarkup('Description'))
       ->setDefaultValue('');
+
+    $fields['target_entity_bundle'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('Target Entity Bundle'))
+      ->setDescription(new TranslatableMarkup('Strojový název bundle (typ obsahu, slovník) naimportované entity.'))
+      ->setSetting('max_length', 32)
+      ->setRequired(TRUE);
+
+    // UUID v Drupalu má vždy přesně 36 znaků.
+    $fields['target_entity_uuid'] = BaseFieldDefinition::create('string')
+      ->setLabel(new TranslatableMarkup('Target Entity UUID'))
+      ->setDescription(new TranslatableMarkup('UUID naimportované entity.'))
+      ->setSetting('max_length', 36)
+      ->setRequired(TRUE);
 
     return $fields;
   }
