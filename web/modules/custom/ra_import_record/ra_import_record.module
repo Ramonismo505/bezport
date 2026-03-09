@@ -1,0 +1,78 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeTypeInterface;
+use Drupal\taxonomy\VocabularyInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for node_type_form.
+ */
+function ra_import_record_form_node_type_form_alter(array &$form, FormStateInterface $form_state): void {
+  // Kontrola oprávnění aktuálního uživatele.
+  if (!\Drupal::currentUser()->hasPermission('administer ra_import_record settings')) {
+    return;
+  }
+
+  /** @var \Drupal\node\NodeTypeInterface $type */
+  $type = $form_state->getFormObject()->getEntity();
+
+  $form['ra_import_record'] = [
+    '#type' => 'details',
+    '#title' => t('Ra Import Record'),
+    '#group' => 'additional_settings',
+  ];
+
+  $form['ra_import_record']['ra_import_record_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Povolit manuální editaci záznamu o importu'),
+    '#description' => t('Zobrazí pole pro propojení s importem na editačním formuláři tohoto typu obsahu.'),
+    '#default_value' => $type->getThirdPartySetting('ra_import_record', 'enabled', FALSE),
+  ];
+
+  $form['#entity_builders'][] = 'ra_import_record_form_node_type_form_builder';
+}
+
+/**
+ * Entity builder for the node type form.
+ */
+function ra_import_record_form_node_type_form_builder(string $entity_type, NodeTypeInterface $type, array &$form, FormStateInterface $form_state): void {
+  $type->setThirdPartySetting('ra_import_record', 'enabled', $form_state->getValue('ra_import_record_enabled'));
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for taxonomy_vocabulary_form.
+ */
+function ra_import_record_form_taxonomy_vocabulary_form_alter(array &$form, FormStateInterface $form_state): void {
+  // Kontrola oprávnění aktuálního uživatele.
+  if (!\Drupal::currentUser()->hasPermission('administer ra_import_record settings')) {
+    return;
+  }
+
+  /** @var \Drupal\taxonomy\VocabularyInterface $vocabulary */
+  $vocabulary = $form_state->getFormObject()->getEntity();
+
+  $form['ra_import_record'] = [
+    '#type' => 'details',
+    '#title' => t('Ra Import Record'),
+    '#open' => TRUE,
+    '#weight' => 10,
+  ];
+
+  $form['ra_import_record']['ra_import_record_enabled'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Povolit manuální editaci záznamu o importu'),
+    '#description' => t('Zobrazí pole pro propojení s importem na editačním formuláři termínů tohoto slovníku.'),
+    '#default_value' => $vocabulary->getThirdPartySetting('ra_import_record', 'enabled', FALSE),
+  ];
+
+  $form['#entity_builders'][] = 'ra_import_record_form_taxonomy_vocabulary_form_builder';
+}
+
+/**
+ * Entity builder for the taxonomy vocabulary form.
+ */
+function ra_import_record_form_taxonomy_vocabulary_form_builder(string $entity_type, VocabularyInterface $vocabulary, array &$form, FormStateInterface $form_state): void {
+  $vocabulary->setThirdPartySetting('ra_import_record', 'enabled', $form_state->getValue('ra_import_record_enabled'));
+}

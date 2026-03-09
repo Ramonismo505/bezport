@@ -55,7 +55,7 @@ interface RaImportRecordInterface extends ContentEntityInterface, EntityChangedI
   /**
    * Gets the changed timestamp.
    */
-  public function getChangedTime(): int;
+  public function getChangedTime();
 
   /**
    * Sets the changed timestamp.
@@ -63,7 +63,7 @@ interface RaImportRecordInterface extends ContentEntityInterface, EntityChangedI
    * @param int $timestamp
    * The changed timestamp.
    */
-  public function setChangedTime($timestamp): static;
+  public function setChangedTime($timestamp);
 
   /**
    * Gets the description.

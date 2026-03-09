@@ -1,0 +1,4 @@
+administer ra_import_record settings:
+  title: 'Administer Ra Import Record settings'
+  description: 'Povoluje uživateli spravovat nastavení modulu Ra Import Record u typů obsahu a slovníků.'
+  restrict access: true
