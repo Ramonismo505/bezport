@@ -1,0 +1,9 @@
+services:
+
+  ra_import_record.manager:
+    class: Drupal\ra_import_record\RaImportManager
+    arguments: ['@entity_type.manager']
+  
+  ra_import_record.importer:
+    class: Drupal\ra_import_record\RaImporter
+    arguments: ['@ra_import_record.manager']

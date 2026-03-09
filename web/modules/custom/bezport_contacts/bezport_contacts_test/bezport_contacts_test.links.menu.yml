@@ -1,0 +1,6 @@
+bezport_contacts_test.form:
+  title: 'Bezport kontakty - testovací rozhraní'
+  description: 'Testovací nástroje pro Bezport kontakty.'
+  route_name: bezport_contacts_test.form
+  parent: bezport_contacts_run_form
+  weight: 100

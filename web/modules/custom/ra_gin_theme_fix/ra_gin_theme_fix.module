@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ra_gin_theme_fix_preprocess_html(&$variables, $hook) {
+  $active_theme_name = \Drupal::service('theme.manager')->getActiveTheme()->getName();
+  $variables['#attached']['library'][] = 'ra_gin_theme_fix/fix_toolbar';
+  if ($active_theme_name === 'gin') {
+    $variables['#attached']['library'][] = 'ra_gin_theme_fix/custom_gin';
+  }
+}
+
+
+
+
+
+
+
+

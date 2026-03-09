@@ -1,0 +1,7 @@
+bezport contacts settings permission:
+  title: 'Nastavení Importu Bezport kontaktů'
+  description: 'Přístup k nastavení importu kontaktů'
+
+bezport contacts run manually permission:
+  title: 'Manuální spouštění Importu Bezport kontaktů'
+  description: 'Přístup k manuálnímu spuštění importu kontaktů'

@@ -1,0 +1,27 @@
+.rabp-breakpoint-grid {
+  display: grid;
+  grid-template-columns: 180px 180px 180px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rabp-breakpoint-grid--header {
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.rabp-breakpoint-label {
+  font-weight: 600;
+}
+
+.rabp-breakpoint-settings input[type="number"] {
+  max-width: 120px;
+}
+
+.rabp-breakpoint-settings input[type="color"] {
+  width: 80px;
+  min-width: 80px;
+  padding: 2px;
+}

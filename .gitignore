@@ -1,0 +1,122 @@
+##################################################
+# Default: ignore everything
+##################################################
+
+*
+
+# allow git files
+!.gitignore
+!.gitattributes
+!.gitmodules
+!.editorconfig
+!.env.example
+!README.md
+!LICENSE
+
+##################################################
+# Allow web directory
+##################################################
+
+!web/
+web/*
+
+##################################################
+# CUSTOM MODULES (tracked)
+##################################################
+
+!web/modules/
+web/modules/*
+
+!web/modules/custom/
+!web/modules/custom/**
+
+##################################################
+# CUSTOM THEME (tracked)
+##################################################
+
+!web/themes/
+web/themes/*
+
+!web/themes/custom/
+web/themes/custom/*
+
+!web/themes/custom/bezport/
+!web/themes/custom/bezport/**
+
+# ignore theme build artifacts
+web/themes/custom/bezport/node_modules/
+web/themes/custom/bezport/dist/
+web/themes/custom/bezport/build/
+web/themes/custom/bezport/.sass-cache/
+web/themes/custom/bezport/.cache/
+web/themes/custom/bezport/npm-debug.log
+web/themes/custom/bezport/yarn-error.log
+
+##################################################
+# Drupal runtime files
+##################################################
+
+web/sites/*/files/
+web/sites/*/private/
+web/sites/*/translations/
+
+##################################################
+# Composer
+##################################################
+
+vendor/
+composer.lock
+
+##################################################
+# DDEV
+##################################################
+
+.ddev/.importdb*
+.ddev/.download*
+.ddev/.global_cache
+
+##################################################
+# Node / frontend
+##################################################
+
+node_modules/
+npm-debug.log
+yarn-error.log
+
+##################################################
+# OS files
+##################################################
+
+.DS_Store
+Thumbs.db
+
+##################################################
+# IDE
+##################################################
+
+.idea/
+.vscode/
+*.code-workspace
+
+##################################################
+# Logs
+##################################################
+
+*.log
+logs/
+
+##################################################
+# Temporary
+##################################################
+
+tmp/
+temp/
+.cache/
+
+##################################################
+# Backups
+##################################################
+
+*.bak
+*.sql
+*.sql.gz

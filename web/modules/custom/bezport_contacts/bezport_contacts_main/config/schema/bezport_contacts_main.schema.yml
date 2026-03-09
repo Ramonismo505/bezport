@@ -1,0 +1,28 @@
+bezport_contacts_main.settings:
+  type: config_object
+  label: 'Bezport Contacts Main settings'
+  mapping:
+    username:
+      type: string
+      label: 'Username'
+    password:
+      type: string
+      label: 'Password'
+    base_uri:
+      type: string
+      label: 'Base URI'
+    use_cron:
+      type: boolean
+      label: 'Use cron'
+    server:
+      type: boolean
+      label: 'REST API server available'
+    last_import_start:
+      type: string
+      label: 'Last import start (ISO 8601)'
+    last_import_end:
+      type: string
+      label: 'Last import end (ISO 8601)'
+    last_import_type:
+      type: string
+      label: 'Last import type (cron/manual/drush)'

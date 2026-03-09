@@ -1,0 +1,19 @@
+bezport_contacts_settings_form:
+  path: 'admin/config/bezport-contacts/settings'
+  defaults:
+    _title: 'Nastavit Import Bezport kontaktů'
+    _form: '\Drupal\bezport_contacts_main\Form\BezportContactsSettingsForm'
+  requirements:
+    _permission: 'bezport contacts settings permission'
+
+bezport_contacts_run_form:
+  path: 'admin/config/bezport-contacts/run'
+  defaults:
+    _title: 'Importovat Bezport kontakty manuálně'
+    _form: '\Drupal\bezport_contacts_main\Form\BezportContactsRunForm'
+  requirements:
+    _permission: 'bezport contacts run manually permission'
+
+
+
+

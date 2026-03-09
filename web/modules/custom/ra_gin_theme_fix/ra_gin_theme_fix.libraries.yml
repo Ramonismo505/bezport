@@ -1,0 +1,12 @@
+fix_toolbar:
+  version: VERSION
+  css:
+    theme:
+      css/fix-gin-toolbar/fix-gin-toolbar.css: {weight: 9997}
+
+custom_gin:
+  version: VERSION
+  css:
+    theme:
+      css/custom-gin/custom-gin.css: {weight: 9998}
+

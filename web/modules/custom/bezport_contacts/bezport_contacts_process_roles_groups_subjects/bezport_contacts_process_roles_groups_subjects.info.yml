@@ -1,0 +1,8 @@
+name: 'Bezport Contacts process Roles, Groups, Subjects'
+type: module
+description: 'Process contacts Roles, Groups, Subjects from custom db tables'
+core_version_requirement: '^9 || ^10 || ^11'
+package: 'Bezport Contacts'
+dependencies:
+  - bezport_contacts_main:bezport_contacts_main
+  - krizport_tools:krizport_tools

@@ -1,0 +1,14 @@
+services:
+  bezport_contacts_process_persons.processor.persons:
+    class: Drupal\bezport_contacts_process_persons\Service\PersonsProcessor
+    arguments:
+      - '@database'
+      - '@entity_type.manager'
+      - '@email.validator'
+      - '@logger.factory'
+
+  bezport_contacts_process_persons.runner:
+    class: Drupal\bezport_contacts_process_persons\Service\ProcessPersonsRunner
+    arguments:
+      - '@bezport_contacts_process_persons.processor.persons'
+      - '@logger.factory'

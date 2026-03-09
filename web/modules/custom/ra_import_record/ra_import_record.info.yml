@@ -1,0 +1,5 @@
+name: 'Ra Import Record'
+type: module
+description: 'Custom lightweight entity for logging migrations to D11.'
+core_version_requirement: ^11
+package: 'Ra Import Solution'

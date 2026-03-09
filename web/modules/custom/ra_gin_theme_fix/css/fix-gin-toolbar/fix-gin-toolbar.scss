@@ -1,0 +1,7 @@
+.gin--horizontal-toolbar {
+  & #toolbar-administration {
+    & .toolbar-lining {
+      overflow-x: visible !important;
+    }
+  }
+}

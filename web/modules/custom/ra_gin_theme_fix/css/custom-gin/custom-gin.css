@@ -1,0 +1,20 @@
+/* Entity browser selected fix */
+.entities-list:not(.entities-list--single-item) {
+  display: block !important;
+}
+.entities-list:not(.entities-list--single-item) .rendered-entity {
+  display: block !important;
+}
+.entities-list:not(.entities-list--single-item) .item-container {
+  border-radius: 3px;
+  min-height: auto;
+  padding: 15px 20px;
+}
+.entities-list:not(.entities-list--single-item) .item-container .field__item {
+  border: 0 none;
+  border-radius: 0;
+}
+
+.gin-table-scroll-wrapper {
+  overflow-y: auto !important;
+}/*# sourceMappingURL=custom-gin.css.map */

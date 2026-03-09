@@ -1,0 +1,6 @@
+name: 'Bezport Contacts main'
+type: module
+description: 'Bezport Contacts main (settings, commands, etc..)'
+core_version_requirement: '^9 || ^10 || ^11'
+package: 'Bezport Contacts'
+configure: bezport_contacts_settings_form

@@ -1,0 +1,6 @@
+bezport contacts test access:
+  title: 'Testovací nástroje pro Bezport Contacts'
+  description: 'Přístup k testovacím nástrojům pro Bezport Contacts'
+  restrict access: true
+
+

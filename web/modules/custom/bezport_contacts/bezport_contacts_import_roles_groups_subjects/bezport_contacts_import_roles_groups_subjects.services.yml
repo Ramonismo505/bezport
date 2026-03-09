@@ -1,0 +1,42 @@
+services:
+  # Runner
+  bezport_contacts_import_rgs.runner:
+    class: Drupal\bezport_contacts_import_roles_groups_subjects\Service\ImportRolesGroupsSubjectsRunner
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.rest_api_client'
+      - '@bezport_contacts_main.control_ras'
+      - '@bezport_contacts_import_rgs.roles_importer'
+      - '@bezport_contacts_import_rgs.groups_importer'
+      - '@bezport_contacts_import_rgs.relation_importer'
+      - '@bezport_contacts_import_rgs.subjects_importer'
+      - '@logger.factory'
+
+  # Importers
+  bezport_contacts_import_rgs.roles_importer:
+    class: Drupal\bezport_contacts_import_roles_groups_subjects\Service\RolesImporter
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@logger.factory'
+
+  bezport_contacts_import_rgs.groups_importer:
+    class: Drupal\bezport_contacts_import_roles_groups_subjects\Service\GroupsImporter
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@logger.factory'
+
+  bezport_contacts_import_rgs.relation_importer:
+    class: Drupal\bezport_contacts_import_roles_groups_subjects\Service\PersonsGroupsRelationImporter
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@logger.factory'
+
+  bezport_contacts_import_rgs.subjects_importer:
+    class: Drupal\bezport_contacts_import_roles_groups_subjects\Service\SubjectsImporter
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@logger.factory'

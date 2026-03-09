@@ -1,0 +1,8 @@
+services:
+  bezport_contacts_main.commands:
+    class: Drupal\bezport_contacts_main\Commands\BezportContactsMainCommands
+    arguments:
+      - '@account_switcher'
+      - '@bezport_contacts_main.orchestrator'
+    tags:
+      - { name: drush.command }

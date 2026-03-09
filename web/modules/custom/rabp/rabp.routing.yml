@@ -1,0 +1,9 @@
+rabp.settings_form:
+  path: '/admin/config/development/rabp'
+  defaults:   
+    _form: '\Drupal\rabp\Form\SettingsForm'
+    _title: 'Nastavení modulu Ra Breakpoints'
+  requirements:
+    _permission: 'access settings rabp'
+  options:
+    _admin_route: TRUE

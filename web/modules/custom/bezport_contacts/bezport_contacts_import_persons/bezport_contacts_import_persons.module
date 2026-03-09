@@ -1,0 +1,86 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\bezport_contacts_main\Service\NullNotifier;
+use Drupal\Core\Session\UserSession;
+
+/**
+ * Implements hook_cron().
+ */
+function bezport_contacts_import_persons_cron(): void {
+
+  // Čtení configu.
+  $config = \Drupal::config('bezport_contacts_main.settings');
+  $use_cron = (bool) $config->get('use_cron');
+
+  if (!$use_cron) {
+    \Drupal::logger('bezport_contacts_import_persons')
+      ->notice('Bezport Contacts import Persons: Cron ran, but "use_cron" is disabled.');
+    return;
+  }
+
+  $account_switcher = \Drupal::service('account_switcher');
+  $account_switcher->switchTo(new UserSession(['uid' => 34]));
+
+  // Test dostupnosti REST API serveru.
+  /** @var bool|string $test_server */
+  $test_server = \Drupal::service('bezport_contacts_main.control_ras')->testRestApiServer();
+
+  $config_edit = \Drupal::service('config.factory')->getEditable('bezport_contacts_main.settings');
+
+  if ($test_server !== TRUE) {
+    $config_edit->set('server', FALSE)->save();
+
+    \Drupal::logger('bezport_contacts_import_persons')
+      ->warning('Bezport Contacts import Persons: REST API not available. @msg', [
+        '@msg' => (string) $test_server,
+      ]);
+    return;
+  }
+
+  $config_edit->set('server', TRUE)->save();
+
+  // Spuštění runneru (místo původního controlleru).
+  $runner_service_id = 'bezport_contacts_import_persons.runner';
+
+  if (!\Drupal::hasService($runner_service_id)) {
+    \Drupal::logger('bezport_contacts_import_persons')
+      ->error('Bezport Contacts import Persons: Runner service "@id" not found.', [
+        '@id' => $runner_service_id,
+      ]);
+    return;
+  }
+
+  $runner = \Drupal::service($runner_service_id);
+  $notifier = new NullNotifier();
+
+  try {
+    $result = $runner->run('cron', $notifier);
+
+    if (!empty($result['ok'])) {
+      $stats = $result['stats'] ?? [];
+
+      \Drupal::logger('bezport_contacts_import_persons')
+        ->notice('Bezport Contacts import Persons: OK. Stats: @stats', [
+          '@stats' => json_encode($stats, JSON_UNESCAPED_UNICODE),
+        ]);
+    }
+    else {
+      $msg = (string) ($result['message'] ?? 'Unknown error');
+
+      \Drupal::logger('bezport_contacts_import_persons')
+        ->error('Bezport Contacts import Persons: FAILED. @msg', [
+          '@msg' => $msg,
+        ]);
+    }
+  }
+  catch (\Throwable $e) {
+    \Drupal::logger('bezport_contacts_import_persons')
+      ->error('Bezport Contacts import Persons: EXCEPTION. @msg', [
+        '@msg' => $e->getMessage(),
+      ]);
+  }
+
+  $account_switcher->switchBack();
+}

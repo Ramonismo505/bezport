@@ -1,0 +1,6 @@
+name: 'Ra Gin theme fix'
+type: module
+description: 'Custom Gin theme fixes'
+core_version_requirement: '^11'
+version: '1.0'
+package: 'Ra Solution'

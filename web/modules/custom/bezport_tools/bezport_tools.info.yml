@@ -1,0 +1,6 @@
+name: 'Bezport Tools'
+type: module
+description: 'Bezport tools & solution'
+core_version_requirement: '^11'
+package: 'Bezport Solution'
+configure: bezport_tools.settings

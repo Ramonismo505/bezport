@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\bezport_contacts_main\Service\NullNotifier;
+use Drupal\Core\Session\UserSession;
+
+/**
+ * Implements hook_cron().
+ */
+function bezport_contacts_process_persons_cron(): void {
+
+  // Čtení configu.
+  $config = \Drupal::config('bezport_contacts_main.settings');
+  $use_cron = (bool) $config->get('use_cron');
+
+  if (!$use_cron) {
+    \Drupal::logger('bezport_contacts_process_persons')
+      ->notice('Bezport Contacts process Persons: Cron ran, but "use_cron" is disabled.');
+    return;
+  }
+
+  $account_switcher = \Drupal::service('account_switcher');
+  $account_switcher->switchTo(new UserSession(['uid' => 34]));
+
+  // Pozn.: process modul už nevolá REST API, pracuje nad DB temp tabulkami,
+  // takže zde NEtestujeme dostupnost REST API serveru a NEřešíme "server" flag.
+
+  $runner_service_id = 'bezport_contacts_process_persons.runner';
+
+  if (!\Drupal::hasService($runner_service_id)) {
+    \Drupal::logger('bezport_contacts_process_persons')
+      ->error('Bezport Contacts process Persons: Runner service "@id" not found.', [
+        '@id' => $runner_service_id,
+      ]);
+    return;
+  }
+
+  $runner = \Drupal::service($runner_service_id);
+  $notifier = new NullNotifier();
+
+  try {
+    $result = $runner->run('cron', $notifier);
+
+    if (!empty($result['ok'])) {
+
+      // Pokud runner vrací 'stats'
+      if (!empty($result['stats']) && is_array($result['stats'])) {
+        \Drupal::logger('bezport_contacts_process_persons')
+          ->notice('Bezport Contacts process Persons: OK. Stats: @stats', [
+            '@stats' => json_encode($result['stats'], JSON_UNESCAPED_UNICODE),
+          ]);
+      }
+      else {
+        // Fallback – pokud vrací 'steps'
+        $steps = $result['steps'] ?? [];
+        \Drupal::logger('bezport_contacts_process_persons')
+          ->notice('Bezport Contacts process Persons: OK. Steps: @steps', [
+            '@steps' => json_encode($steps, JSON_UNESCAPED_UNICODE),
+          ]);
+      }
+
+      \Drupal::service('bezport_contacts_main.import_state')->markEnd();
+
+    }
+    else {
+      $msg = (string) ($result['message'] ?? 'Unknown error');
+      \Drupal::logger('bezport_contacts_process_persons')
+        ->error('Bezport Contacts process Persons: FAILED. @msg', [
+          '@msg' => $msg,
+        ]);
+    }
+  }
+  catch (\Throwable $e) {
+    \Drupal::logger('bezport_contacts_process_persons')
+      ->error('Bezport Contacts process Persons: EXCEPTION. @msg', [
+        '@msg' => $e->getMessage(),
+      ]);
+  }
+
+  $account_switcher->switchBack();
+}

@@ -1,0 +1,16 @@
+bezport_contacts_run_form:
+  title: 'Importovat Bezport kontakty'
+  route_name: bezport_contacts_run_form
+  parent: system.admin_config
+
+bezport_contacts_settings_form:
+  title: 'Nastavení importu Bezport kontaktů'
+  route_name: bezport_contacts_settings_form
+  parent: bezport_contacts_run_form
+
+view.admin_contacts.persons:
+  title: 'Přehled kontaktů'
+  route_name: view.admin_contacts.persons
+  parent: system.admin_content
+  weight: 180
+

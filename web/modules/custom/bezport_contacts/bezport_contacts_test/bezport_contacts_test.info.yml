@@ -1,0 +1,7 @@
+name: 'Bezport Contacts test'
+type: module
+description: 'Testovací nástroje pro Bezport Contacts.'
+package: 'Bezport Contacts'
+core_version_requirement: '^9 || ^10 || ^11'
+dependencies:
+  - bezport_contacts_main:bezport_contacts_main

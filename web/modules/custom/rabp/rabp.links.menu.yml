@@ -1,0 +1,6 @@
+rabp_settings:
+  title: 'Ra Breakpoints'
+  parent: system.admin_config_development
+  description: 'Configure Breakpoints preview.'
+  route_name: rabp.settings_form
+  

@@ -1,0 +1,24 @@
+services:
+  bezport_contacts_import_persons.runner:
+    class: Drupal\bezport_contacts_import_persons\Service\ImportPersonsRunner
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.rest_api_client'
+      - '@bezport_contacts_main.control_ras'
+      - '@bezport_contacts_import_persons.persons_importer'
+      - '@bezport_contacts_import_persons.person_subject_roles_importer'
+      - '@logger.factory'
+
+  bezport_contacts_import_persons.persons_importer:
+    class: Drupal\bezport_contacts_import_persons\Service\PersonsImporter
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@logger.factory'
+
+  bezport_contacts_import_persons.person_subject_roles_importer:
+    class: Drupal\bezport_contacts_import_persons\Service\PersonSubjectRolesImporter
+    arguments:
+      - '@database'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@logger.factory'

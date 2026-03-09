@@ -1,0 +1,9 @@
+name: 'Bezport Contacts import Roles, Groups, Subjects'
+type: module
+description: 'Import contacts Roles, Groups, Subjects from Rest API to custom db tables'
+core_version_requirement: '^9 || ^10 || ^11'
+package: 'Bezport Contacts'
+dependencies:
+  - bezport_contacts_main:bezport_contacts_main
+
+

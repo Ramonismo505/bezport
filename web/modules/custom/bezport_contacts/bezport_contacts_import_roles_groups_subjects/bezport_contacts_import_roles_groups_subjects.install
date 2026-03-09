@@ -1,0 +1,191 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+function bezport_contacts_import_roles_groups_subjects_schema(){ 
+  
+  $schema['bezport_contacts_roles'] =[
+    'description' => 'Dočasná tabulka pro import kontaktů - Role',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,      
+      ],
+      'role_id' => [
+        'description' => '$role[id]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => '$role[name]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,        
+      ],
+    ],
+    'primary key' => ['id'],
+  ]; 
+  
+  $schema['bezport_contacts_groups'] =[
+    'description' => 'Dočasná tabulka pro import kontaktů - Skupiny',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,      
+      ],
+      'group_id' => [
+        'description' => '$group[id]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => '$group[name]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,        
+      ],      
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  $schema['bezport_contacts_subjects'] =[
+    'description' => 'Dočasná tabulka pro import kontaktů - Subjekty',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,      
+      ],
+      'subject_id' => [
+        'description' => '$subject[id]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => '$subject[name]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,        
+      ],
+      'street' => [
+        'description' => '$subject[street]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'street_number' => [
+        'description' => '$subject[streetNumber]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'municipality' => [
+        'description' => '$subject[municipality]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'municipality_region' => [
+        'description' => '$subject[municipalityRegion]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'zip' => [
+        'description' => '$subject[zip]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'whole_address' => [
+        'description' => '$subject[wholeAddress]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'emails_serialized' => [
+        'description' => '$subject[emails] (serializované)',
+        'type' => 'text',
+        'size' => 'normal',     
+        'not null' => FALSE,    
+      ],
+      'emails' => [
+        'description' => '$subject[emails] (oddělené středníkem)',
+        'type' => 'text',
+        'size' => 'normal',     
+        'not null' => FALSE,    
+      ],      
+      'mobile_phones_serialized' => [
+        'description' => '$subject[mobilePhones] (serializované)',
+        'type' => 'text',
+        'size' => 'normal',     
+        'not null' => FALSE,    
+      ],
+      'mobile_phones' => [
+        'description' => '$subject[mobilePhones] (oddělené středníkem)',
+        'type' => 'text',
+        'size' => 'normal',     
+        'not null' => FALSE,    
+      ],
+      'landlines_serialized' => [
+        'description' => '$subject[landlines] (serializované)',
+        'type' => 'text',
+        'size' => 'normal',     
+        'not null' => FALSE,    
+      ],
+      'landlines' => [
+        'description' => '$subject[landlines] (oddělené středníkem)',
+        'type' => 'text',
+        'size' => 'normal',     
+        'not null' => FALSE,    
+      ],
+      'group' => [
+        'description' => '$subject[group]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'company_id' => [
+        'description' => '$subject[companyID]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  $schema['bezport_contacts_persons_groups_rls'] =[
+    'description' => 'Dočasná tabulka pro import kontaktů - persons - groups rls',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,      
+      ],
+      'person_id' => [
+        'description' => '$personGroup[personId]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'group_id' => [
+        'description' => '$personGroup[groupId]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],    
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  return $schema;
+};  
+  
+  
+
+

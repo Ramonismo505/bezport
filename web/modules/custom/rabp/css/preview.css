@@ -1,0 +1,45 @@
+.block-rabreakpointbox{
+	display: inline;
+}
+.rabp-container{
+	display: block;	
+	position: fixed;
+	z-index: 1000;	
+}
+.rabp-container.topleft{
+	top: 0px;
+	left: 0px;
+}
+.rabp-container.topright{
+	top: 0px;
+	right: 0px;
+}
+.rabp-container.bottomleft{
+	bottom: 0px;
+	left: 0px;
+}
+.rabp-container.bottomright{
+	bottom: 0px;
+	right: 0px;
+}
+.rabp-container p.content{
+	margin: 0;
+	padding: 0;
+	line-height: 100%;
+	font-family: "Courier New", Courier, monospace;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.rabp-container .query{
+	font-size: 14px;
+	text-align: center;
+	padding: 0.2em 0.5em 0.2em 0.5em;			
+}
+.rabp-container .size{ 
+	display: block;
+	text-align: center;
+	color: white;
+	background-color: #708090;
+	font-size: 12px;
+	padding: 0.2em 0.5em 0.2em 0.5em;
+}

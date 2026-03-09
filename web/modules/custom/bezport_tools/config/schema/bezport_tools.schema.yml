@@ -1,0 +1,7 @@
+bezport_tools.settings:
+  type: config_object
+  label: 'Bezport Tools settings'
+  mapping:
+    bezport_admin_uid:
+      type: integer
+      label: 'Bezport admin uuid'

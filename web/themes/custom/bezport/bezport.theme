@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Add your custom theme override functions here.
+ */
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function bezport_preprocess_block(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_field().
+ */
+function bezport_preprocess_field(&$variables, $hook) {
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * Adds additional classes.
+ */
+function bezport_preprocess_html(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_node.
+ *
+ * Add template suggestions and classes.
+ */
+function bezport_preprocess_node(&$variables) {
+}
+
+/**
+ * Implements template_preprocess_page().
+ *
+ * Add convenience variables to the page template.
+ */
+function bezport_preprocess_page(array &$variables): void {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  $variables['page_suggestion'] = match ($route_name) {
+    'user.login', 'user.pass', 'user.register' => 'login',
+    'system.403', 'system.404' => 'access_denied',
+    default => 'common',
+  };
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function bezport_preprocess_views_view(&$variables) {
+}

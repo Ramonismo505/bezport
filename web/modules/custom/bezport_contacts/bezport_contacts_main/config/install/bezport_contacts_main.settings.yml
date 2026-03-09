@@ -1,0 +1,8 @@
+username: ''
+password: ''
+base_uri: ''
+use_cron: false
+server: false
+last_import_start: ''
+last_import_end: ''
+last_import_type: ''

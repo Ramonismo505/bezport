@@ -1,0 +1,39 @@
+services:
+  bezport_contacts_process_rgs.roles_processor:
+    class: Drupal\bezport_contacts_process_roles_groups_subjects\Service\RolesProcessor
+    arguments:
+      - '@database'
+      - '@entity_type.manager'
+      - '@logger.factory'
+
+  bezport_contacts_process_rgs.groups_processor:
+    class: Drupal\bezport_contacts_process_roles_groups_subjects\Service\GroupsProcessor
+    arguments:
+      - '@database'
+      - '@entity_type.manager'
+      - '@logger.factory'
+
+  bezport_contacts_process_rgs.subjects_groups_processor:
+    class: Drupal\bezport_contacts_process_roles_groups_subjects\Service\SubjectsGroupsProcessor
+    arguments:
+      - '@database'
+      - '@entity_type.manager'
+      - '@logger.factory'
+
+  bezport_contacts_process_rgs.subjects_processor:
+    class: Drupal\bezport_contacts_process_roles_groups_subjects\Service\SubjectsProcessor
+    arguments:
+      - '@database'
+      - '@entity_type.manager'
+      - '@email.validator'
+      - '@logger.factory'
+      - 34
+
+  bezport_contacts_process_rgs.runner:
+    class: Drupal\bezport_contacts_process_roles_groups_subjects\Service\ProcessRolesGroupsSubjectsRunner
+    arguments:
+      - '@bezport_contacts_process_rgs.roles_processor'
+      - '@bezport_contacts_process_rgs.groups_processor'
+      - '@bezport_contacts_process_rgs.subjects_groups_processor'
+      - '@bezport_contacts_process_rgs.subjects_processor'
+      - '@logger.factory'

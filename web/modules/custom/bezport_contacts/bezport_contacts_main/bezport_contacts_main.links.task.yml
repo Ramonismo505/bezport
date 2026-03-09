@@ -1,0 +1,37 @@
+bezport_contacts_run_form:
+  route_name: bezport_contacts_run_form
+  title: Importovat Bezport kontakty  
+  base_route: bezport_contacts_run_form
+  weight: 0
+
+bezport_contacts_settings_form:
+  route_name: bezport_contacts_settings_form
+  title: Nastavení importu Bezport kontaktů  
+  base_route: bezport_contacts_run_form
+  weight: 10
+
+view.admin_contacts.persons:
+  route_name: view.admin_contacts.persons
+  title: Osoby  
+  base_route: view.admin_contacts.persons
+  weight: 0
+
+view.admin_contacts.subjects:
+  route_name: view.admin_contacts.subjects
+  title: Firmy  
+  base_route: view.admin_contacts.persons
+  weight: 1
+
+view.admin_contacts_terms.roles:
+  route_name: view.admin_contacts_terms.roles
+  title: Role  
+  base_route: view.admin_contacts.persons
+  weight: 2
+
+view.admin_contacts_terms.groups:
+  route_name: view.admin_contacts_terms.groups
+  title: Skupiny  
+  base_route: view.admin_contacts.persons
+  weight: 3
+
+

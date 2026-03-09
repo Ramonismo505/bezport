@@ -1,0 +1,16 @@
+admin:
+  version: VERSION
+  css:
+    component:
+      css/setting.css: { weight: 0 }
+
+preview:
+  version: VERSION
+  css:
+    component:
+      css/preview.css: { weight: 0 }
+  js:
+    js/preview.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

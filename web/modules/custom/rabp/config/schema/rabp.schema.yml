@@ -1,0 +1,55 @@
+rabp.settings:
+  type: config_object
+  label: 'Ra Breakpoints settings'
+  mapping:
+    small:
+      type: integer
+      label: 'Small breakpoint (px)'
+    smedium:
+      type: integer
+      label: 'Small-medium breakpoint (px)'
+    medium:
+      type: integer
+      label: 'Medium breakpoint (px)'
+    large:
+      type: integer
+      label: 'Large breakpoint (px)'
+    xlarge:
+      type: integer
+      label: 'X-large breakpoint (px)'
+    xxlarge:
+      type: integer
+      label: 'XX-large breakpoint (px)'
+    xxxlarge:
+      type: integer
+      label: 'XXX-large breakpoint (px)'
+    position:
+      type: string
+      label: 'Box position'
+    status:
+      type: boolean
+      label: 'Enabled'
+    foreground:
+      type: string
+      label: 'Text color'
+    background_small:
+      type: string
+      label: 'Background Small'
+    background_smedium:
+      type: string
+      label: 'Background Small-medium'
+    background_medium:
+      type: string
+      label: 'Background Medium'
+    background_large:
+      type: string
+      label: 'Background Large'
+    background_xlarge:
+      type: string
+      label: 'Background X-large'
+    background_xxlarge:
+      type: string
+      label: 'Background XX-large'
+    background_xxxlarge:
+      type: string
+      label: 'Background XXX-large'

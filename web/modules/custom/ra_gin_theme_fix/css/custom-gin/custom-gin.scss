@@ -1,0 +1,22 @@
+/* Entity browser selected fix */
+.entities-list {
+  &:not(.entities-list--single-item) {
+    display: block !important;
+    & .rendered-entity {
+      display: block !important;
+    }
+    & .item-container {
+      border-radius: 3px;
+      min-height: auto;
+      padding: 15px 20px;
+      & .field__item {
+        border: 0 none;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.gin-table-scroll-wrapper {
+  overflow-y: auto !important;
+}

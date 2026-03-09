@@ -1,0 +1,7 @@
+'access settings rabp':
+  title: 'Nastavení'
+  description: 'Přístup k nastavení breakpointů'
+
+'view rabp':
+  title: 'Zobrazení'
+  description: 'Zobrazovat breakpointy'

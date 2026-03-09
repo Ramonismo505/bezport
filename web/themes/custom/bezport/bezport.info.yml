@@ -1,0 +1,42 @@
+name: Bezpečnostní portál KvK
+description: "Custom sub-theme, inherits from the Foundation base theme read <a href=\"http://foundation.zurb.com/docs/index.php\">framework documentation</a>"
+core_version_requirement: ^9 || ^10 || ^11
+type: theme
+base theme: zurb_foundation
+
+# Image appears on admin/appearance
+screenshot: images/screenshot.jpg
+
+# Uncomment these lines and change "STARTER" to your theme name if you
+# need to add custom CSS or JS
+libraries:
+ - bezport/global
+
+ckeditor5-stylesheets:
+  - css/bezport.css
+
+# Regions are output in the page.html.twig
+regions:
+  page_top: 'Page top'
+  header: 'Header'
+  header_menu: 'Header menu'
+  breadcrumb: 'Breadcrumb'
+  subheader: 'Subheader'
+  help: 'Help'
+  highlighted: 'Highlighted'
+  content_top: 'Content top'
+  content: 'Content'
+  sidebar: 'Sidebar'
+  content_bottom: 'Content bottom'
+  footer: 'Footer'
+  bottom_support: 'Bottom support'
+  page_bottom: 'Page bottom'
+
+regions_hidden:
+  - page_top
+  - page_bottom
+
+features:
+  - slogan
+  - favicon
+  - node_user_picture

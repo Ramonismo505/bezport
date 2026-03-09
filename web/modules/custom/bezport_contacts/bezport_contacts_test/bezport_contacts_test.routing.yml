@@ -1,0 +1,7 @@
+bezport_contacts_test.form:
+  path: '/admin/config/bezport-contacts/test'
+  defaults:
+    _form: '\Drupal\bezport_contacts_test\Form\BcTestForm'
+    _title: 'Bezport kontakty - testovací rozhraní'
+  requirements:
+    _permission: 'bezport contacts test access'

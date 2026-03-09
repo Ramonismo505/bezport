@@ -1,0 +1,156 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+function bezport_contacts_import_persons_schema(){
+  
+  $schema['bezport_contacts_persons'] =[
+    'description' => 'Dočasná tabulka pro import kontaktů - Persons',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,      
+      ],
+      'person_id' => [
+        'description' => '$person[id]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'first_name' => [
+        'description' => '$person[firstName]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'last_name' => [
+        'description' => '$person[lastName]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,        
+      ],
+      'degree_before' => [
+        'description' => '$person[degreeBefore]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'degree_after' => [
+        'description' => '$person[degreeAfter]',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,        
+      ],
+      'mobile' => [
+        'description' => '$person[mobile]',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => FALSE,        
+      ],
+      'phone' => [
+        'description' => '$person[phone]',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => FALSE,        
+      ],
+      'fax' => [
+        'description' => '$person[fax]',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => FALSE,        
+      ],
+      'email' => [
+        'description' => '$person[email]',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => FALSE,        
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  $schema['bezport_contacts_persons_subjects_roles_rls'] =[
+    'description' => 'Dočasná tabulka pro import kontaktů - persons - subjects - roles release',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,      
+      ],
+      'person_id' => [
+        'description' => '$personSubjectRole[personId]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'role_id' => [
+        'description' => '$personSubjectRole[roleId]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'subject_id' => [
+        'description' => '$personSubjectRole[subjectId]',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  return $schema;
+};  
+
+function bezport_contacts_import_persons_update_8001() {  
+  $person_role = [
+    'description' => '$person[function]',
+    'type' => 'text',
+    'size' => 'normal',     
+    'not null' => FALSE,    
+  ];  
+  $schema = Database::getConnection()->schema();
+  $schema->addField('bezport_contacts_persons', 'role', $person_role);
+}
+
+function bezport_contacts_import_persons_update_8002() {
+  $street = [
+    'description' => '$person[street]',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,    
+  ];
+  $street_number = [
+    'description' => '$person[streetNumber]',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,    
+  ];
+  $street_number2 = [
+    'description' => '$person[streetNumber2]',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,    
+  ];
+  $region = [
+    'description' => '$person[region]',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,    
+  ];
+  $city = [
+    'description' => '$person[city]',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,    
+  ];  
+  $schema = Database::getConnection()->schema();  
+  $schema->addField('bezport_contacts_persons', 'street', $street);
+  $schema->addField('bezport_contacts_persons', 'street_number', $street_number);
+  $schema->addField('bezport_contacts_persons', 'street_number2', $street_number2);
+  $schema->addField('bezport_contacts_persons', 'region', $region);
+  $schema->addField('bezport_contacts_persons', 'city', $city);
+}
+  
+  
+
+

@@ -1,0 +1,4 @@
+'bezport contacts export view export permission':
+  title: 'Zobrazit export kontaktů'
+  description: 'Přístup k exportu kontaktů'
+  resctrict access: true

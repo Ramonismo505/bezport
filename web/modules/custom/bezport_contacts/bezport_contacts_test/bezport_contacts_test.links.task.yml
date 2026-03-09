@@ -1,0 +1,5 @@
+bezport_contacts_test.tab:
+  route_name: bezport_contacts_test.form
+  title: 'Bezport kontakty - testovací rozhraní'
+  base_route: bezport_contacts_run_form
+  weight: 5

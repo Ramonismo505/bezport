@@ -1,0 +1,49 @@
+services:
+
+  # Logger channel.
+  logger.channel.bezport_contacts_main:
+    parent: logger.channel_base
+    arguments: ['bezport_contacts_main']
+
+  # CONTROL REST API SERVER
+  bezport_contacts_main.control_ras:
+    class: Drupal\bezport_contacts_main\Service\ControlRestApiAvailability
+    arguments:
+      - '@config.factory'
+      - '@http_client_factory'
+
+  # REST API CLIENT (authentication + http client)
+  bezport_contacts_main.rest_api_client:
+    class: Drupal\bezport_contacts_main\Service\RestApiClient
+    arguments:
+      - '@http_client_factory'
+      - '@config.factory'
+      - '@bezport_contacts_main.control_ras'
+      - '@logger.factory'
+
+  # PAGE FETCHER (retry + skip + UTF-8 + JSON guard)
+  bezport_contacts_main.api_page_fetcher:
+    class: Drupal\bezport_contacts_main\Service\ApiPageFetcher
+    arguments:
+      - '@logger.factory'
+
+  # NULL NOTIFIER (for cron / web controllers)
+  bezport_contacts_main.null_notifier:
+    class: Drupal\bezport_contacts_main\Service\NullNotifier
+
+  # LAST IMPORT STATES
+  bezport_contacts_main.import_state:
+    class: Drupal\bezport_contacts_main\Service\ImportStateManager
+    arguments:
+      - '@config.factory'
+      - '@date.formatter'
+
+  # Main orchestrator used by Form / Cron / Drush.
+  bezport_contacts_main.orchestrator:
+    class: Drupal\bezport_contacts_main\Service\BezportContactsOrchestrator
+    arguments:
+      - '@module_handler'
+      - '@service_container'
+      - '@bezport_contacts_main.import_state'
+      - '@logger.channel.bezport_contacts_main'
+

@@ -1,0 +1,7 @@
+name: Bezport Contacts Export
+type: module
+description: Export Bezport contacts to Excel 
+core_version_requirement: ^8.9 || ^9
+version: 2.0
+package: Bezport Contacts
+    

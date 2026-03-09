@@ -1,0 +1,28 @@
+<?php
+
+use Drupal\views\ViewExecutable;
+ 
+function bezport_contacts_export_views_pre_render(ViewExecutable $view) {   
+  if ($view->id() == 'contacts_subjects' && $view->current_display == 'data_export_xlsx') {
+    foreach($view->result as $value) {
+      foreach($view->result as $value) { 
+        $phones = [];
+        $phones_value = '';
+        if(!empty($value->_entity->field_c_landlines)) {          
+          foreach ($value->_entity->field_c_landlines as $value_obj) {
+            $phones[] = $value_obj->value;
+          }
+        }        
+        if(!empty($value->_entity->field_c_mobile_phones)) {          
+          foreach ($value->_entity->field_c_mobile_phones as $value_obj) {
+            $phones[] = $value_obj->value;
+          }
+        }        
+        if(!empty($phones)) { 
+          $phones_value = implode('; ',$phones);
+        }
+        $value->_entity->set('field_c_zip', $phones_value);
+      } 
+    }
+  }
+}

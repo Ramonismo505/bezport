@@ -1,0 +1,121 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * rabp.module
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function rabp_help(string $route_name, RouteMatchInterface $route_match): ?string {
+  return match ($route_name) {
+    'help.page.rabp' => 'Nápověda k modulu Ra breakpoints ...',
+    default => NULL,
+  };
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function rabp_page_attachments_alter(array &$page): void {
+  $account = \Drupal::currentUser();
+
+  // Only for allowed users.
+  if (!$account->hasPermission('view rabp')) {
+    return;
+  }
+
+  $config = \Drupal::config('rabp.settings');
+
+  if (!(bool) $config->get('status')) {
+    return;
+  }
+
+  // Breakpoints.
+  $small = (int) ($config->get('small') ?? 0);
+  $smedium = (int) ($config->get('smedium') ?? 320);
+  $medium = (int) ($config->get('medium') ?? 480);
+  $large = (int) ($config->get('large') ?? 768);
+  $xlarge = (int) ($config->get('xlarge') ?? 1024);
+  $xxlarge = (int) ($config->get('xxlarge') ?? 1440);
+  $xxxlarge = (int) ($config->get('xxxlarge') ?? 1600);
+
+  $small_up = $small + 1;
+  $smedium_up = $smedium + 1;
+  $medium_up = $medium + 1;
+  $large_up = $large + 1;
+  $xlarge_up = $xlarge + 1;
+  $xxlarge_up = $xxlarge + 1;
+  $xxxlarge_up = $xxxlarge + 1;
+
+  // Colors (fallbacks keep the original hardcoded palette if config is missing).
+  $foreground = (string) ($config->get('foreground') ?: '#000000');
+
+  $bg_small = (string) ($config->get('background_small') ?: '#e6e6fa');
+  $bg_smedium = (string) ($config->get('background_smedium') ?: '#f0c0a4');
+  $bg_medium = (string) ($config->get('background_medium') ?: '#7fffd4');
+  $bg_large = (string) ($config->get('background_large') ?: '#ffdab9');
+  $bg_xlarge = (string) ($config->get('background_xlarge') ?: '#f3f400');
+  $bg_xxlarge = (string) ($config->get('background_xxlarge') ?: '#8cc7ff');
+  $bg_xxxlarge = (string) ($config->get('background_xxxlarge') ?: '#ffcd6f');
+
+  $css_display_none = '.rabp-small, .rabp-smedium, .rabp-medium, .rabp-large, .rabp-xlarge, .rabp-xxlarge, .rabp-xxxlarge {display:none;}';
+
+  // Base text color.
+  $css = '.rabp-container{color:' . $foreground . ';}';
+
+  $css .= '@media only screen and (max-width:' . $smedium . 'px){'
+    . $css_display_none
+    . ' .rabp-small {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_small . ';}'
+    . '}';
+
+  $css .= '@media only screen and (min-width:' . $smedium_up . 'px) and (max-width:' . $medium . 'px){'
+    . $css_display_none
+    . ' .rabp-smedium {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_smedium . ';}'
+    . '}';
+
+  $css .= '@media only screen and (min-width:' . $medium_up . 'px) and (max-width:' . $large . 'px){'
+    . $css_display_none
+    . ' .rabp-medium {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_medium . ';}'
+    . '}';
+
+  $css .= '@media only screen and (min-width:' . $large_up . 'px) and (max-width:' . $xlarge . 'px){'
+    . $css_display_none
+    . ' .rabp-large {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_large . ';}'
+    . '}';
+
+  $css .= '@media only screen and (min-width:' . $xlarge_up . 'px) and (max-width:' . $xxlarge . 'px){'
+    . $css_display_none
+    . ' .rabp-xlarge {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_xlarge . ';}'
+    . '}';
+
+  $css .= '@media only screen and (min-width:' . $xxlarge_up . 'px) and (max-width:' . $xxxlarge . 'px){'
+    . $css_display_none
+    . ' .rabp-xxlarge {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_xxlarge . ';}'
+    . '}';
+
+  $css .= '@media only screen and (min-width:' . $xxxlarge_up . 'px){'
+    . $css_display_none
+    . ' .rabp-xxxlarge {display:block;}'
+    . ' .rabp-container{background-color:' . $bg_xxxlarge . ';}'
+    . '}';
+
+  $page['#attached']['html_head'][] = [
+    [
+      '#tag' => 'style',
+      '#value' => $css,
+    ],
+    'rabp',
+  ];
+}

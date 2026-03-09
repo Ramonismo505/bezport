@@ -1,0 +1,71 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\Core\Cache\CacheableMetadata;
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function ra_toolbar_fix_toolbar_alter(array &$items): void {
+  // Fixujeme jen vybrané položky, aby to bylo KISS a mělo minimální dopad.
+  foreach (['user', 'shortcuts', 'devel'] as $key) {
+    if (!isset($items[$key])) {
+      continue;
+    }
+    // Pro jistotu projdeme celou položku (někdy je lazy builder až uvnitř tray).
+    _ra_toolbar_fix_resolve_lazy_builders($items[$key]);
+  }
+}
+
+/**
+ * Recursively resolves #lazy_builder render arrays into built render arrays.
+ *
+ * BigPipe v Drupal 11.3 občas nechá placeholder nevyplněný; tímto vynutíme build
+ * ještě před BigPipe.
+ */
+function _ra_toolbar_fix_resolve_lazy_builders(array &$element, int $depth = 0): void {
+  // Bezpečnost proti extrémnímu zanoření.
+  if ($depth > 25) {
+    return;
+  }
+
+  // Pokud je to přímo lazy builder placeholder, vybuildíme ho.
+  if (isset($element['#lazy_builder']) && is_array($element['#lazy_builder'])) {
+    $lazy = $element['#lazy_builder'];
+
+    // Formát je typicky: [callback, arguments].
+    $callback_definition = $lazy[0] ?? NULL;
+    $args = $lazy[1] ?? [];
+
+    if ($callback_definition) {
+      // Zachovej cache metadata z původního placeholderu.
+      $placeholder_cacheability = CacheableMetadata::createFromRenderArray($element);
+
+      // Vyresolve callback (umí i "service:method" definice).
+      $callable = \Drupal::service('callable_resolver')
+        ->getCallableFromDefinition($callback_definition);
+
+      $built = call_user_func_array($callable, is_array($args) ? $args : []);
+
+      // Lazy builder musí vrátit render array.
+      if (is_array($built)) {
+        // Aplikuj cacheability z placeholderu na vybuilděný obsah.
+        $placeholder_cacheability->applyTo($built);
+
+        // Nahraď placeholder skutečným render array.
+        $element = $built;
+      }
+    }
+
+    // Po nahrazení ještě pokračuj rekurzí (někdy je lazy builder i uvnitř).
+    // (Je to levné, protože většinou už tam #lazy_builder nebude.)
+  }
+
+  // Projdi děti (jen pole).
+  foreach ($element as $k => &$child) {
+    if (is_array($child)) {
+      _ra_toolbar_fix_resolve_lazy_builders($child, $depth + 1);
+    }
+  }
+}

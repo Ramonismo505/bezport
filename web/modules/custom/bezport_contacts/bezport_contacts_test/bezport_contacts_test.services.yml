@@ -1,0 +1,15 @@
+services:
+  bezport_contacts_test.paginated_endpoint_checker:
+    class: Drupal\bezport_contacts_test\Service\PaginatedEndpointChecker
+    arguments:
+      - '@bezport_contacts_main.control_ras'
+      - '@bezport_contacts_main.rest_api_client'
+      - '@bezport_contacts_main.api_page_fetcher'
+
+  bezport_contacts_test.record_searcher:
+    class: Drupal\bezport_contacts_test\Service\RestApiRecordSearcher
+    arguments:
+      - '@bezport_contacts_main.control_ras'
+      - '@bezport_contacts_main.rest_api_client'
+      - '@bezport_contacts_main.api_page_fetcher'
+      - '@bezport_contacts_test.paginated_endpoint_checker'

@@ -1,0 +1,7 @@
+name: 'Ra Toolbar Fix'
+type: module
+description: 'Workaround for Drupal 11.3 BigPipe placeholder issue affecting Gin toolbar dropdowns.'
+core_version_requirement: ^11
+package: 'Ra Solution'
+dependencies:
+  - drupal:toolbar

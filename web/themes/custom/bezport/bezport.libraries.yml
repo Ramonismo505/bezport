@@ -1,0 +1,14 @@
+global:
+  version: VERSION
+  css:
+    base:
+      css/bezport.css: {}
+  js:
+    js-custom/bezport.js: { }
+    js/foundation.min.js: {minified: true}
+    js/foundation_init.js: {}
+    js/motion-ui.min.js: {minified: true}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

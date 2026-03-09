@@ -1,0 +1,13 @@
+bezport_tools.settings:
+  path: 'admin/config/bezport-tools/settings'
+  defaults:
+    _title: 'Nastavit Bezport Tools'
+    _form: '\Drupal\bezport_tools\Form\BezportToolsSettingsForm'
+  requirements:
+    _permission: 'bezport tools settings permission'
+
+
+
+
+
+
