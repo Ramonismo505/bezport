@@ -18,6 +18,9 @@ use Drupal\Core\Entity\EntityChangedTrait;
   id: 'ra_import_record',
   label: new TranslatableMarkup('Import Record'),
   base_table: 'ra_import_record',
+  handlers: [
+    'views_data' => 'Drupal\views\EntityViewsData',
+  ],
   entity_keys: [
     'id' => 'id',
     'uuid' => 'uuid',

@@ -16,6 +16,7 @@ function ra_import_record_views_data_alter(array &$data): void {
       'field' => 'nid',
       'id' => 'standard',
       'label' => t('Data Importu (Node)'),
+      'entity type' => 'ra_import_record', // <--- PŘIDÁNO
       'extra' => [
         [
           'field' => 'target_entity_type',
@@ -32,13 +33,14 @@ function ra_import_record_views_data_alter(array &$data): void {
     'relationship' => [
       'base' => 'ra_import_record',
       'base field' => 'target_entity_id',
-      'field' => 'tid', // ID termínu
+      'field' => 'tid',
       'id' => 'standard',
       'label' => t('Data Importu (Taxonomy)'),
+      'entity type' => 'ra_import_record', // <--- PŘIDÁNO
       'extra' => [
         [
           'field' => 'target_entity_type',
-          'value' => 'taxonomy_term', // Filtrujeme pouze záznamy pro taxonomii
+          'value' => 'taxonomy_term',
         ],
       ],
     ],

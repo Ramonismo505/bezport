@@ -1,0 +1,37 @@
+manyrows:
+  label: 'Many rows'
+  category: 'Ra Layouts'
+  template: templates/manyrows
+  default_region: row_1
+  icon_map:
+    - [row_1]
+    - [row_2]
+    - [row_3]
+    - [row_4]
+    - [row_5]
+    - [row_6]
+    - [row_7]
+    - [row_8]
+    - [row_9]
+    - [row_10]
+  regions:
+    row_1:
+      label: 'Row 1'
+    row_2:
+      label: 'Row 2'
+    row_3:
+      label: 'Row 3'
+    row_4:
+      label: 'Row 4'
+    row_5:
+      label: 'Row 5'
+    row_6:
+      label: 'Row 6'
+    row_7:
+      label: 'Row 7'
+    row_8:
+      label: 'Row 8'
+    row_9:
+      label: 'Row 9'
+    row_10:
+      label: 'Row 10'

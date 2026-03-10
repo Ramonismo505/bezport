@@ -1,0 +1,5 @@
+name: 'Ra Layouts'
+type: module
+description: 'Custom layouts'
+core_version_requirement: ^10 || ^11
+package: 'Ra Solution'
