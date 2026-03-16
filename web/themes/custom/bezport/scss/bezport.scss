@@ -109,7 +109,7 @@
 
 // Prototyping Utilities
 // https://get.foundation/sites/docs/prototyping-utilities.html
-// @include foundation-prototype-classes;
+@include foundation-prototype-classes;
 
 // Motion UI
 // https://get.foundation/sites/docs/motion-ui.html
@@ -126,27 +126,48 @@
 // =========
 
 // --- Base ---
-// Drupal-specific styles copied from base theme. (Required)
-@import "base/drupal";
-// Import your mixins early so they can be used by other partials. (optional)
-// @import "base/mixins";
-// @import "base/common";
-// @import "base/elements";
+@import 'base/drupal';
+@import 'base/mixins';
+@import 'base/custom-vars';
+@import 'base/placeholders';
+@import 'base/common';
+@import 'base/elements';
 
 // --- Layout ---
-// Each section of the document has it's own partial seperated out to improve
-// developer experience. Additionally, grids can be declared in layouts as well.
-//@import "layout/header";
-//@import "layout/main";
-//@import "layout/aside";
-//@import "layout/footer";
+@import 'layout/main';
+@import 'layout/header';
+@import 'layout/aside';
+@import 'layout/footer';
 
-// --- Modules ---
-// @import "modules/block";
-// @import "modules/button";
+// Components
+@import 'components/type';
+@import 'components/tables';
+@import 'components/topbar';
+@import 'components/navigation';
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/block';
+@import 'components/tabs';
+@import 'components/misc';
 
-// --- States ---
-// @import "states/collapse";
+// Themes
+@import 'themes/old-content';
+@import 'themes/content';
+@import 'themes/node-types';
+@import 'themes/node-type-news';
+@import 'themes/node-type-hzs-news';
+@import 'themes/node-type-bezport-contact';
+@import 'themes/custom-content';
+@import 'themes/wysiwyg-templates';
+@import 'themes/search';
+@import 'themes/ckeditor5';
 
-// --- Themes ---
-// @import "theme/button-light";
+// Devel
+@import 'devel/devel';
+
+// --- Print ---
+@import 'print/print.scss';
+
+
+
+
