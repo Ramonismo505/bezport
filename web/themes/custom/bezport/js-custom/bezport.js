@@ -1,17 +1,22 @@
 /**
  * @file
- * Placeholder file for custom sub-theme behaviors.
- *
+ * Custom behaviors for Bezport theme.
  */
-(function ($, Drupal) {
+(function ($, Drupal, drupalSettings) {
+  'use strict';
 
-  /**
-   * Use this behavior as a template for custom Javascript.
-   */
   Drupal.behaviors.bezport = {
     attach: function (context, settings) {
-      //alert("I'm alive!");
+      // Bezpečné načtení proměnné z PHP (fallback na false).
+      const isLoggedIn = settings.bezport?.global?.isLoggedIn || false;
+
+      // Zde je tvá logika závislá na přihlášení
+      if (isLoggedIn) {
+        //console.log("Jsem přihlášený uživatel!");
+      } else {
+        //console.log("Nejsem přihlášený.");
+      }
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery, Drupal, drupalSettings);

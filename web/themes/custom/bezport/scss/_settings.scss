@@ -62,19 +62,82 @@
 
 @import 'util/util';
 
+// FONTS
+// ---------
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+$font-family-fira-sans: 'Fira Sans', sans-serif;
+
 // 1. Global
 // ---------
-
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(1330);
 $global-lineheight: 1.5;
+
+// Font weight
+$font-weight-light:     300;
+$font-weight-regular:   400;
+$font-weight-medium:    500;
+$font-weight-semibold:  600;
+$font-weight-bold:      700;
+
+$font-weight-normal: $font-weight-regular; 
+
+// Colors
+$white        : #ffffff;
+$light-gray   : #e8e8e8;
+$medium-gray  : #cacaca;
+
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #fbfbfb;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$dark-gray   : $charcoal;
+$black       : #000000;
+
+$edit-label  : #599DA0;
+
+$slategray   : #778899;
+$linkblue    : #6f68a8; //#1779ba;
+$pastelblue  : #504795; //#006e95;
+$blue        : #312783; //#0161AD;
+$darkblue    : #201769; //#004275;
+$orange      : #F38A39;
+$darkorange  : #E66845;
+$red         : #BE1622; //#d4000f;
+$pastelred   : #c83843; //#ba2c01;
+$darkred     : #980e19; //#A7000C;
+$green       : #389500;
+$yellow      : #f2df03;
+$violet      : #ee82ee;
+$darkviolet  : #a650a6;
+
+$alert-green  : #28D861;
+$alert-yellow : #FFFF00;
+$alert-orange : $orange;
+$alert-red    : $red;
+
 $foundation-palette: (
-  primary: #1779ba,
+  primary: #0161AD,
   secondary: #767676,
-  success: #3adb76,
+  success: #389500,
   warning: #ffae00,
-  alert: #cc4b37,
+  alert: #d4000f,
 );
+
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
@@ -82,7 +145,7 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: $font-family-fira-sans;
 $body-safe-padding: false;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -108,10 +171,12 @@ $print-hrefs: true;
 
 $breakpoints: (
   small: 0,
-  medium: 640px,
-  large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  smedium: 320px,
+  medium: 480px,
+  large: 768px,
+  xlarge: 1024px,  
+  xxlarge: 1360px,
+  xxxlarge: 1600px,
 );
 $breakpoints-hidpi: (
   hidpi-1: 1,
@@ -121,7 +186,7 @@ $breakpoints-hidpi: (
   hidpi-3: 3
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium large);
+$breakpoint-classes: (small smedium medium large xlarge xxlarge xxxlarge);
 
 // 3. The Grid
 // -----------
@@ -129,8 +194,9 @@ $breakpoint-classes: (small medium large);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
-  small: 20px,
-  medium: 30px,
+  small: 30px,
+  medium: 40px,
+  large: 60px,
 );
 $grid-column-align-edge: true;
 $grid-column-alias: 'columns';
@@ -148,20 +214,20 @@ $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
   small: (
-    'h1': ('font-size': 24),
-    'h2': ('font-size': 20),
-    'h3': ('font-size': 19),
-    'h4': ('font-size': 18),
-    'h5': ('font-size': 17),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 20),
+    'h2': ('font-size': 18),
+    'h3': ('font-size': 16),
+    'h4': ('font-size': 14),
+    'h5': ('font-size': 14),
+    'h6': ('font-size': 13),
   ),
   medium: (
-    'h1': ('font-size': 48),
-    'h2': ('font-size': 40),
-    'h3': ('font-size': 31),
-    'h4': ('font-size': 25),
-    'h5': ('font-size': 20),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 20),
+    'h3': ('font-size': 18),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 14),
+    'h6': ('font-size': 13),
   ),
 );
 $header-text-rendering: optimizeLegibility;

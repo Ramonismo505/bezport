@@ -20,9 +20,15 @@ function bezport_preprocess_field(&$variables, $hook) {
 /**
  * Implements template_preprocess_html().
  *
- * Adds additional classes.
+ * Adds additional classes and JS settings.
  */
-function bezport_preprocess_html(&$variables) {
+function bezport_preprocess_html(array &$variables): void {
+  $is_logged_in = \Drupal::currentUser()->isAuthenticated();
+  $variables['#cache']['contexts'][] = 'user.roles:authenticated';
+  $variables['#attached']['drupalSettings']['bezport']['global']['isLoggedIn'] = $is_logged_in;
+  if (!$is_logged_in) {
+    $variables['attributes']['class'][] = 'user-not-logged-in';
+  }
 }
 
 /**
