@@ -143,7 +143,27 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-$body-background: $white;
+
+
+// Set default color variables for logged / not logged
+$primary-link-color: var(--primary-link-color);
+$secondary-link-color: var(--secondary-link-color);
+$elements-bg-color: var(--elements-bg-color);
+
+body {
+  &.user-not-logged-in {
+    --primary-link-color: #{$blue};
+    --secondary-link-color: #{$darkblue};
+    --elements-bg-color: #{$darkblue};
+  }
+  &.user-logged-in {
+    --primary-link-color: #{$red};
+    --secondary-link-color: #{$darkred};
+    --elements-bg-color: #{$red};
+  }
+}
+
+$body-background: $silver;
 $body-font-color: $black;
 $body-font-family: $font-family-fira-sans;
 $body-safe-padding: false;
@@ -153,12 +173,12 @@ $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0;
+$global-radius: 3px;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
-$global-prototype-breakpoints: false;
+$global-prototype-breakpoints: true;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
@@ -237,8 +257,8 @@ $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
 $enable-code-inline: true;
-$anchor-color: $primary-color;
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color: $primary-link-color;
+$anchor-color-hover: $secondary-link-color;
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -248,8 +268,8 @@ $list-lineheight: $paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
 $list-style-type: disc;
 $list-style-position: outside;
-$list-side-margin: 1.25rem;
-$list-nested-side-margin: 1.25rem;
+$list-side-margin: 2rem;
+$list-nested-side-margin: 2rem;
 $defnlist-margin-bottom: 1rem;
 $defnlist-term-weight: $global-weight-bold;
 $defnlist-term-margin-bottom: 0.3rem;
@@ -543,7 +563,19 @@ $form-button-radius: $global-radius;
 $label-background: $primary-color;
 $label-color: $white;
 $label-color-alt: $black;
-$label-palette: $foundation-palette;
+//$label-palette: $foundation-palette;
+$label-palette: (
+  common-border   : $white,
+  blue            : $blue,
+  orange          : $alert-orange,
+  green           : $green,
+  darkgrey        : $charcoal,
+  grey            : $gainsboro,
+  draft           : $primary-color,
+  waiting-approval: $alert-orange,
+  published       : $green,
+  archived        : $charcoal
+) !default;
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
@@ -621,15 +653,15 @@ $orbit-control-zindex: 10;
 // 27. Pagination
 // --------------
 
-$pagination-font-size: rem-calc(14);
+$pagination-font-size: rem-calc(13);
 $pagination-margin-bottom: $global-margin;
 $pagination-item-color: $black;
 $pagination-item-padding: rem-calc(3 10);
 $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
-$pagination-item-background-hover: $light-gray;
-$pagination-item-background-current: $primary-color;
-$pagination-item-color-current: $white;
+$pagination-item-background-hover: transparent;
+$pagination-item-background-current: transparent;
+$pagination-item-color-current: $black;
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
@@ -826,7 +858,7 @@ $reveal-padding: $global-padding;
 $reveal-border: 1px solid $medium-gray;
 $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
-$reveal-overlay-background: rgba($black, 0.45);
+$reveal-overlay-background: rgba($black, 0.7);
 
 // 48. Slider
 // ----------
@@ -866,12 +898,13 @@ $switch-cursor-disabled: not-allowed;
 $table-background: $white;
 $table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
-$table-padding: rem-calc(8 10 10);
+$table-padding: rem-calc(6 8 8);
 $table-hover-scale: 2%;
 $table-row-hover: darken($table-background, $table-hover-scale);
 $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
 $table-is-striped: true;
-$table-striped-background: smart-scale($table-background, $table-color-scale);
+//$table-striped-background: smart-scale($table-background, $table-color-scale);
+$table-striped-background: $white;
 $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale * 0.5);
 $table-head-row-hover: darken($table-head-background, $table-hover-scale);
@@ -886,15 +919,15 @@ $table-stack-breakpoint: medium;
 // --------
 
 $tab-margin: 0;
-$tab-background: $white;
+$tab-background: transparent;
 $tab-color: $primary-color;
 $tab-background-active: $light-gray;
 $tab-active-color: $primary-color;
 $tab-item-font-size: rem-calc(12);
-$tab-item-background-hover: $white;
+$tab-item-background-hover: transparent;
 $tab-item-padding: 1.25rem 1.5rem;
-$tab-content-background: $white;
-$tab-content-border: $light-gray;
+$tab-content-background: transparent;
+$tab-content-border: transparent;
 $tab-content-color: $body-font-color;
 $tab-content-padding: 1rem;
 
@@ -923,8 +956,8 @@ $titlebar-icon-spacing: 0.25rem;
 // -----------
 
 $has-tip-cursor: help;
-$has-tip-font-weight: $global-weight-bold;
-$has-tip-border-bottom: dotted 1px $dark-gray;
+$has-tip-font-weight: $font-weight-regular;
+$has-tip-border-bottom: 0 none;
 $tooltip-background-color: $black;
 $tooltip-color: $white;
 $tooltip-padding: 0.75rem;
@@ -942,7 +975,7 @@ $topbar-background: $light-gray;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
-$topbar-unstack-breakpoint: medium;
+$topbar-unstack-breakpoint: xlarge;
 
 // 56. Xy Grid
 // -----------
