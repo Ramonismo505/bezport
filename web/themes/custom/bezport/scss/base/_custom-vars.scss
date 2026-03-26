@@ -1,5 +1,5 @@
 // LOGO
-$krizport-logo: url('../images/logo-bezport-new.svg'); // 1000x332
+$bezport-logo: url('../images/logo-bezport-new.svg'); // 1000x332
 $logo-kvk-new: url('../images/logo-kvk-new.svg'); //1000x454
 
 // BG IMAGES
@@ -29,4 +29,10 @@ $chevron-right-red: url('../images/chevron-right-red.svg');
 $chevron-right-white: url('../images/chevron-right-white.svg');
 $chevron-right-blue-png: url('../images/chevron-right-blue-png.png');
 
+// HEADER HEIGHT
+// height: map-get($header-height, small);
+$header-height: (  
+  small: 55px,
+  large: 65px, 
+);
 

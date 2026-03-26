@@ -1,1 +1,65 @@
-// Non-modular or client styles for .l-header region.
+// -------------------------------------
+// HEADER
+// -------------------------------------
+header.site-header {
+  border-bottom: 10px solid $silver;
+  position: relative;
+  & .header-content-container {
+    & .header-content-wrapper {
+      height: map-get($header-height, small);
+      position: relative;
+			background-color: rgba(cadetblue, 0.2);
+    }
+  }
+  @include breakpoint(large) {
+    & .header-content-container {
+      & .header-content-wrapper {
+        height: map-get($header-height, large);
+      }      
+    }
+  }
+}
+
+// -------------------------------------
+// SITE BRANDING
+// -------------------------------------
+.block-site-branding {
+  position: absolute;    
+  top: 5px;
+  left: 0;
+  z-index: 25;
+  isolation: isolate;
+  width: 136px;
+  height: 45px;
+  background-color: rgba(red, .1);
+  & .contextual {
+    display: none;
+  }
+	& .site-logo {
+    @include element-invisible;  
+  }
+  & .site-name {
+		@include absolute-stretch;
+    display: block;
+    margin: 0;
+		padding: 0;
+		line-height: 1;	
+		& a {
+			@include absolute-stretch;
+      display: block;  
+      z-index: 2;
+			@include full-bg-img;
+			background-image: $bezport-logo;
+			& > span {
+				@include element-invisible;	
+			}
+		}
+	}
+  & .site-slogan {
+		@include element-invisible;	
+	}
+  @include breakpoint(large) {
+    width: 166px;
+    height: 55px;
+  }
+}
