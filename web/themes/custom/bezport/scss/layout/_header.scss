@@ -69,4 +69,8 @@ header.site-header {
     width: 166px;
     height: 55px;
   }
+  &.element-sticky {
+    position: fixed;  
+    left: calc(50% - 650px);
+  }
 }
