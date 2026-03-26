@@ -1,0 +1,78 @@
+// MAIN
+.main-menu-container {
+  position: relative;
+  z-index: 1;
+  & .title-bar {
+    @include flex;
+		@include flex-align(right, middle);
+    padding: 0;
+		position: relative;
+    background-color: rgba(green, .1);
+    & .menu-icon-title-wrapper {
+      height: map-get($header-height, small);
+		  //background-color: aquamarine;		  
+    }
+	}
+}
+
+/* HAMBURGER GLOBAL */
+#top-bar-sticky-container {
+	.title-bar {
+    padding: 10px 10px 0 10px;
+    .menu-icon-title-wrapper {
+      display: inline-block; 
+      .menu-icon { 
+        margin: 0;
+        padding: 0;
+        width: 45px;
+        height: 30px;
+        display: block;
+        position: relative;
+			  border-radius: 0;
+        //background-color: rgba(red, .5);
+        &::after {
+          display: none; 
+        }
+        .hamburger {
+          @include absolute-stretch;
+          display: block;
+          //background-color: green;
+          span {
+            background-color: $primary-link-color;
+            display: block;
+            width: 100%;
+            height: 5px;
+            position: absolute;
+            left: 0;          
+            transition: all .2s ease;
+            &:nth-child(1) {
+			        top: 0;	
+		        }
+            &:nth-child(2) {
+			        top: 12px;	
+		        }
+            &:nth-child(3) {
+			        top: 24px;	
+		        }
+          }
+        }
+      }
+      .title-bar-title { 
+        display: block;
+        font-size: 12px;
+        font-weight: $font-weight-light;
+        text-transform: uppercase;
+        line-height: 1;
+        padding-top: 3px;
+        color: $blue;
+        position: relative;
+        &:after {
+          @include css-triangle(5px, $primary-link-color, down);
+          position: absolute;
+          top: 5px;
+          right: 0;
+        }
+      }
+    }
+	}
+}

@@ -150,12 +150,10 @@ $primary-link-color: var(--primary-link-color);
 $secondary-link-color: var(--secondary-link-color);
 $elements-bg-color: var(--elements-bg-color);
 
-body {
-  &.user-not-logged-in {
-    --primary-link-color: #{$blue};
-    --secondary-link-color: #{$darkblue};
-    --elements-bg-color: #{$darkblue};
-  }
+body { 
+  --primary-link-color: #{$blue};
+  --secondary-link-color: #{$darkblue};
+  --elements-bg-color: #{$darkblue};
   &.user-logged-in {
     --primary-link-color: #{$red};
     --secondary-link-color: #{$darkred};

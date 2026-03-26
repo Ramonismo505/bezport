@@ -2,21 +2,36 @@
  * @file
  * Custom behaviors for Bezport theme.
  */
-(function ($, Drupal, drupalSettings) {
+(function ($, Drupal, drupalSettings, once) {
   'use strict';
 
   Drupal.behaviors.bezport = {
     attach: function (context, settings) {
-      // Bezpečné načtení proměnné z PHP (fallback na false).
+
       const isLoggedIn = settings.bezport?.global?.isLoggedIn || false;
 
-      // Zde je tvá logika závislá na přihlášení
-      if (isLoggedIn) {
-        //console.log("Jsem přihlášený uživatel!");
-      } else {
-        //console.log("Nejsem přihlášený.");
-      }
+      // WOW init
+      new WOW().init();
+
+      // Main menu hamburger toggle
+      $(once('menu-toggle', '#main-menu-title-bar', context)).each(function () {
+        $(this).on('toggled.zf.responsiveToggle', function () {
+          if ($('#main-menu').css('display') === 'none') {
+            $('#main-menu-hamburger').removeClass('open');
+          } else {
+            $('#main-menu-hamburger').addClass('open');
+          }
+        });
+      });
+
+      
+      
+
+
+
+
+
     }
   };
 
-})(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal, drupalSettings, once);

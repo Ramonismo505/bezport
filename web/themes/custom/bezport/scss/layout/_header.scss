@@ -2,19 +2,31 @@
 // HEADER
 // -------------------------------------
 header.site-header {
-  border-bottom: 10px solid $silver;
   position: relative;
-  & .header-content-container {
-    & .header-content-wrapper {
-      height: map-get($header-height, small);
-      position: relative;
-			background-color: rgba(cadetblue, 0.2);
+  isolation: isolate;
+  .header-content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: calc(#{map-get($header-height, small)} + 10px);
+    //background-color: burlywood;
+    border-bottom: 10px solid $silver;
+    .header-content-wrapper {
+      .header-content {
+        height: map-get($header-height, small);
+        position: relative;
+			  background-color: rgba(cadetblue, 0.2);
+      }
     }
   }
   @include breakpoint(large) {
-    & .header-content-container {
-      & .header-content-wrapper {
-        height: map-get($header-height, large);
+    .header-content-container {
+      height: calc(#{map-get($header-height, large)} + 10px);
+      .header-content-wrapper {
+        .header-content {
+          height: map-get($header-height, large);
+        }
       }      
     }
   }
@@ -27,27 +39,24 @@ header.site-header {
   position: absolute;    
   top: 5px;
   left: 0;
-  z-index: 25;
-  isolation: isolate;
+  z-index: 2;
   width: 136px;
   height: 45px;
-  background-color: rgba(red, .1);
-  & .contextual {
+  .contextual {
     display: none;
   }
-	& .site-logo {
+	.site-logo {
     @include element-invisible;  
   }
-  & .site-name {
+  .site-name {
 		@include absolute-stretch;
     display: block;
     margin: 0;
 		padding: 0;
 		line-height: 1;	
-		& a {
+		a {
 			@include absolute-stretch;
-      display: block;  
-      z-index: 2;
+      display: block;
 			@include full-bg-img;
 			background-image: $bezport-logo;
 			& > span {
@@ -55,7 +64,7 @@ header.site-header {
 			}
 		}
 	}
-  & .site-slogan {
+  .site-slogan {
 		@include element-invisible;	
 	}
   @include breakpoint(large) {
