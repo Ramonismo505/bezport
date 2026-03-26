@@ -59,3 +59,29 @@ function bezport_preprocess_page(array &$variables): void {
  */
 function bezport_preprocess_views_view(&$variables) {
 }
+
+/**
+ * Implements theme_preprocess_menu__MENU_NAME().
+ */
+function bezport_preprocess_menu__main(array &$variables): void {  
+  $config = \Drupal::config('bezport.settings');
+
+  $enable = (bool) $config->get('zurb_foundation_top_bar_enable');
+  $sticky = (bool) $config->get('zurb_foundation_top_bar_sticky');
+
+  if ($enable) {
+    $variables['top_bar'] = TRUE;
+
+    if ($sticky) {
+      $variables['top_bar_attributes'] = $variables['top_bar_attributes'] ?? [];
+      $variables['top_bar_attributes']['data-options'] = 'stickyOn:xxlarge';
+    }
+  }
+
+  $menu_1st_level_count = isset($variables['items']) ? count($variables['items']) : 0;
+
+  $variables['dropdownType'] = $menu_1st_level_count > 5 
+    ? 'dropdown-type-stretch' 
+    : 'dropdown-type-common';
+}
+

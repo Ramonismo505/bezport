@@ -1,5 +1,5 @@
 ralayouts_manyrows:
-  label: 'Ra Layouts'
+  label: 'Many Rows'
   category: 'Ra Layouts'
   template: manyrows
   path: layouts/manyrows
