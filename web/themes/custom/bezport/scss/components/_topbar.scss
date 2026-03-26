@@ -2,12 +2,13 @@
 .main-menu-container {
   position: relative;
   z-index: 1;
+  background-color: $white;
   & .title-bar {
     @include flex;
 		@include flex-align(right, middle);
     padding: 0;
 		position: relative;
-    background-color: rgba(green, .1);
+    background-color: $white;
     & .menu-icon-title-wrapper {
       height: map-get($header-height, small);
 		  //background-color: aquamarine;		  

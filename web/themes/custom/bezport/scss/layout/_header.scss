@@ -10,13 +10,14 @@ header.site-header {
     left: 0;
     width: 100%; 
     height: calc(#{map-get($header-height, small)} + 10px);
-    //background-color: burlywood;
-    border-bottom: 10px solid $silver;
+    //border-bottom: 10px solid $silver;
+    border-bottom: 10px solid red;
+    margin-bottom: 10px;
     .header-content-wrapper {
       .header-content {
         height: map-get($header-height, small);
         position: relative;
-			  background-color: rgba(cadetblue, 0.2);
+			  //background-color: rgba(cadetblue, 0.2);
       }
     }
   }
