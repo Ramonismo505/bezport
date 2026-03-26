@@ -18,7 +18,8 @@
 /* HAMBURGER GLOBAL */
 #top-bar-sticky-container {
 	.title-bar {
-    padding: 10px 10px 0 10px;
+    padding-top: 10px;
+    margin: 0 10px 0 0;
     .menu-icon-title-wrapper {
       display: inline-block; 
       .menu-icon { 
@@ -64,7 +65,7 @@
         text-transform: uppercase;
         line-height: 1;
         padding-top: 3px;
-        color: $blue;
+        color: $primary-link-color;
         position: relative;
         &:after {
           @include css-triangle(5px, $primary-link-color, down);
@@ -73,6 +74,27 @@
           right: 0;
         }
       }
+      &:hover,
+      &:focus {
+        .menu-icon { 
+          .hamburger {
+            span {
+              background-color: $secondary-link-color;
+            }
+          }
+        }
+        .title-bar-title {
+          color: $secondary-link-color;
+          &:after {
+            @include css-triangle(5px, $secondary-link-color, down);
+          }
+        }
+      }
     }
 	}
+  @include breakpoint(medium) {
+    .title-bar {
+      margin: 0 15px 0 0;
+    }
+  }
 }

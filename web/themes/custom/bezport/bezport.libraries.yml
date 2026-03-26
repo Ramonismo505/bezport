@@ -7,13 +7,15 @@ global:
     js/foundation.min.js: { minified: true }
     js/foundation_init.js: {}
     js/motion-ui.min.js: { minified: true }
-    libs/wow/wow.min.js: {weight: -5}
-    js-custom/bezport.js: {weight: 0}
+    js-custom/bezport.js: {} # Weight jsme smazali
   dependencies:
     - core/drupal
     - core/jquery
     - core/once
     - core/drupalSettings
     - zurb_foundation/global
+    - bezport/wow
 
-
+wow:
+  js:
+    libs/wow/wow.min.js: { minified: true }
