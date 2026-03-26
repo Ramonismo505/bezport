@@ -3,23 +3,31 @@
   position: relative;
   z-index: 1;
   background-color: $white;
-  & .title-bar {
+  .title-bar {
     @include flex;
 		@include flex-align(right, middle);
     padding: 0;
 		position: relative;
     background-color: $white;
-    & .menu-icon-title-wrapper {
+    .menu-icon-title-wrapper {
       height: map-get($header-height, small);
-		  //background-color: aquamarine;		  
+      padding-top: 5px;
+		  background-color: aquamarine;		  
     }
 	}
+  @include breakpoint(large) {
+    .title-bar {
+      .menu-icon-title-wrapper {
+        height: map-get($header-height, large);
+        padding-top: 15px;
+      }
+    }
+  }
 }
 
 /* HAMBURGER GLOBAL */
 #top-bar-sticky-container {
 	.title-bar {
-    padding-top: 10px;
     margin: 0 10px 0 0;
     .menu-icon-title-wrapper {
       display: inline-block; 
@@ -74,9 +82,8 @@
           top: 5px;
           right: 0;
         }
-      }
-      &:hover,
-      &:focus {
+      } 
+      &.open {
         .menu-icon { 
           .hamburger {
             span {
@@ -96,6 +103,15 @@
   @include breakpoint(medium) {
     .title-bar {
       margin: 0 15px 0 0;
+    }
+  }
+   @include breakpoint(large) {
+    .title-bar {
+      .menu-icon-title-wrapper {
+        .menu-icon { 
+          width: 55px;
+        }
+      }
     }
   }
 }

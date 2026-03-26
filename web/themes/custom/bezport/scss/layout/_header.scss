@@ -4,26 +4,22 @@
 header.site-header {
   position: relative;
   isolation: isolate;
+  border-bottom: 10px solid $silver;
   .header-content-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%; 
-    height: calc(#{map-get($header-height, small)} + 10px);
-    //border-bottom: 10px solid $silver;
-    border-bottom: 10px solid red;
-    margin-bottom: 10px;
-    .header-content-wrapper {
+    .header-content-wrapper {  
       .header-content {
         height: map-get($header-height, small);
         position: relative;
-			  //background-color: rgba(cadetblue, 0.2);
+			  background-color: rgba(cadetblue, .4);
       }
     }
   }
   @include breakpoint(large) {
     .header-content-container {
-      height: calc(#{map-get($header-height, large)} + 10px);
       .header-content-wrapper {
         .header-content {
           height: map-get($header-height, large);
@@ -69,6 +65,7 @@ header.site-header {
 		@include element-invisible;	
 	}
   @include breakpoint(large) {
+    top: 10px;
     width: 166px;
     height: 55px;
   }

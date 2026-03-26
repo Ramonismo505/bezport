@@ -19,13 +19,16 @@
         jQuery(titleBar).on('toggled.zf.responsiveToggle', () => {
           const mainMenu = document.getElementById('main-menu');
           const hamburger = document.getElementById('main-menu-hamburger');
+          const titleIco = document.getElementById('menu-icon-title-wrapper');
           
-          if (mainMenu && hamburger) {
+          if (mainMenu && hamburger && titleIco) {
             const displayStyle = window.getComputedStyle(mainMenu).display;
             if (displayStyle === 'none') {
               hamburger.classList.remove('open');
+              titleIco.classList.remove('open');
             } else {
               hamburger.classList.add('open');
+              titleIco.classList.add('open');
             }
           }
         });
