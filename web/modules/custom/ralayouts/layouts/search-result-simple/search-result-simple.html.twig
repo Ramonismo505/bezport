@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a Search result simple layout.
+ *
+ * This template provides a rows display layout with full width areas
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+
+  {# @DCG Drupal naming convention for CSS classes in layouts seems weird. Feel free to change it. #}
+  {%
+    set classes = [
+      'layout',
+      'layout--search-result-simple',
+    ]
+  %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.srs_title %}
+      <div {{ region_attributes.srs_title.addClass('layout__region', 'layout__region--srs-title') }}>
+        {{ content.srs_title }}
+      </div>            
+    {% endif %}
+    {% if content.search_result_excerpt %}
+      <div {{ region_attributes.search_result_excerpt.addClass('layout__region', 'layout__region--srs-excerpt') }}>
+        {{ content.search_result_excerpt }}
+      </div>            
+    {% endif %}
+    {% if content.search_result_info %}
+      <div {{ region_attributes.search_result_info.addClass('layout__region', 'layout__region--srs-info') }}>
+        {{ content.search_result_info }}
+      </div>            
+    {% endif %}
+  </div> 
+
+
+
+
+
+
+
+
+{% endif %}

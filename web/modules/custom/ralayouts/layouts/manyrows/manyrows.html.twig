@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display ra layouts layout.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout wrapper.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+
+  {# @DCG Drupal naming convention for CSS classes in layouts seems weird. Feel free to change it. #}
+  {%
+    set classes = [
+      'layout',
+      'layout--manyrows',
+    ]
+  %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.row_1 %}
+      <div {{ region_attributes.row_1.addClass('layout__region','layout__region--row-1') }}>
+        {{ content.row_1 }}
+      </div>            
+    {% endif %}
+    {% if content.row_2 %}
+      <div {{ region_attributes.row_2.addClass('layout__region','layout__region--row-2') }}>
+        {{ content.row_2 }}
+      </div>            
+    {% endif %}
+    {% if content.row_3 %}
+      <div {{ region_attributes.row_3.addClass('layout__region','layout__region--row-3') }}>
+        {{ content.row_3 }}
+      </div>            
+    {% endif %}
+    {% if content.row_4 %}
+      <div {{ region_attributes.row_4.addClass('layout__region','layout__region--row-4') }}>
+        {{ content.row_4 }}
+      </div>            
+    {% endif %}
+    {% if content.row_5 %}
+      <div {{ region_attributes.row_5.addClass('layout__region','layout__region--row-5') }}>
+        {{ content.row_5 }}
+      </div>            
+    {% endif %}
+    {% if content.row_6 %}
+      <div {{ region_attributes.row_6.addClass('layout__region','layout__region--row-6') }}>
+        {{ content.row_6 }}
+      </div>            
+    {% endif %}
+    {% if content.row_7 %}
+      <div {{ region_attributes.row_7.addClass('layout__region','layout__region--row-7') }}>
+        {{ content.row_7 }}
+      </div>            
+    {% endif %}
+    {% if content.row_8 %}
+      <div {{ region_attributes.row_8.addClass('layout__region','layout__region--row-8') }}>
+        {{ content.row_8 }}
+      </div>            
+    {% endif %}
+    {% if content.row_9 %}
+      <div {{ region_attributes.row_9.addClass('layout__region','layout__region--row-9') }}>
+        {{ content.row_9 }}
+      </div>            
+    {% endif %}
+    {% if content.row_10 %}
+      <div {{ region_attributes.row_10.addClass('layout__region','layout__region--row-10') }}>
+        {{ content.row_10 }}
+      </div>            
+    {% endif %}
+  </div>
+
+{% endif %}

@@ -1,7 +1,8 @@
-manyrows:
-  label: 'Many rows'
+ralayouts_manyrows:
+  label: 'Ra Layouts'
   category: 'Ra Layouts'
-  template: templates/manyrows
+  template: manyrows
+  path: layouts/manyrows
   default_region: row_1
   icon_map:
     - [row_1]
@@ -35,3 +36,21 @@ manyrows:
       label: 'Row 9'
     row_10:
       label: 'Row 10'
+
+ralayouts_search_result_simple:
+  label: 'Search result simple'
+  category: 'Ra Layouts'
+  template: search-result-simple
+  path: layouts/search-result-simple
+  default_region: srs_title
+  icon_map:
+    - [srs_title]
+    - [search_result_excerpt]
+    - [search_result_info]
+  regions:
+    srs_title:
+      label: 'Title'
+    search_result_excerpt:
+      label: 'Search result excerpt'
+    search_result_info:
+      label: 'Search result info'
