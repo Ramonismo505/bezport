@@ -4,6 +4,7 @@
 header.site-header {
   position: relative;
   isolation: isolate;
+  z-index: 20;
   border-bottom: 10px solid $silver;
   .header-content-container {
     position: absolute;

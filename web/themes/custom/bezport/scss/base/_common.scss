@@ -1,6 +1,24 @@
-/* MINIMAL WIDTH */
+// -------------------------------------
+// Min width & full height
+// -------------------------------------
 html,
 body {
   min-width: 320px; 
   overflow-x: hidden; 
+  height: 100%;
+  margin: 0;
 }
+
+#page-container {
+	display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#page-wrapper {
+	flex-shrink: 0;
+}
+
+
+
+

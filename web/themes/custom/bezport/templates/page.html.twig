@@ -103,45 +103,52 @@
             </div>
           {% endif %}
 
-          <main id="main" class="main-content-wrapper" role="main">
-            <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-            {% if page.content_top %}
-              <div id="content-top-container">                
-                {{ page.content_top }}
-              </div>
-            {% endif %}
-
-            {% if page_suggestion == 'login' %} 
-              <div class="page-login-container"> 
-                <div class="page-login-wrapper">                
-                  {{ page.content }}
-                </div>
-              </div>
-            {% elseif page_suggestion == 'access_denied' %}
-              <div class="page-ad-container"> 
-                <div class="page-ad-wrapper">                
-                  {{ page.content }}
-                </div>
-              </div>
-            {% else %}
-              <div{{ content_attributes }}>
-                {% if page.content %}
-                  {{ page.content }}
-                {% endif %}
-              </div>
-            {% endif %}
-
-          </main>
-
           {% if page_suggestion == 'common' %}
-            <aside id="sidebar-container" class="sidebar-container">
-              <div class="sidebar-wrapper">
-                {% if page.sidebar %}
-                  {{ page.sidebar }}
-                {% endif %}
-              </div>
-            </aside>
+            <div class="content-sidebar-wrapper">
+          {% endif %}
+
+            <main id="main" class="main-content-wrapper" role="main">
+              <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+              {% if page.content_top %}
+                <div id="content-top-container">                
+                  {{ page.content_top }}
+                </div>
+              {% endif %}
+
+              {% if page_suggestion == 'login' %} 
+                <div class="page-login-container"> 
+                  <div class="page-login-wrapper">                
+                    {{ page.content }}
+                  </div>
+                </div>
+              {% elseif page_suggestion == 'access_denied' %}
+                <div class="page-ad-container"> 
+                  <div class="page-ad-wrapper">                
+                    {{ page.content }}
+                  </div>
+                </div>
+              {% else %}
+                <div{{ content_attributes }}>
+                  {% if page.content %}
+                    {{ page.content }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            </main>
+
+            {% if page_suggestion == 'common' %}
+              <aside id="sidebar-container" class="sidebar-container">
+                <div class="sidebar-wrapper">
+                  {% if page.sidebar %}
+                    {{ page.sidebar }}
+                  {% endif %}
+                </div>
+              </aside>
+            {% endif %}
+          
+          {% if page_suggestion == 'common' %}
+            </div>{# .content-sidebar-wrapper #}
           {% endif %}
 
         </div>{# #main-container #}
@@ -154,7 +161,6 @@
           </div>
         </div>
       {% endif %}
-
 
     </div>{# #page #}
 
