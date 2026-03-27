@@ -1,0 +1,313 @@
+// -------------------------------------
+// Colors
+// -------------------------------------
+.red {
+  color: $red;
+}
+.darkred {
+  color: $darkred;
+}
+.linkblue {
+  color: $linkblue;
+}
+.blue {
+  color: $blue;
+}
+.darkblue {
+  color: $darkblue;
+}
+.green {
+  color: $green;
+}
+
+// -------------------------------------
+// Font sizes
+// -------------------------------------
+.text-size-80perc {
+  font-size: 80%;
+}
+.text-size-120perc {
+  font-size: 120%;
+}
+
+// -------------------------------------
+// Align
+// -------------------------------------
+.align-left {
+  margin: 0 10px 10px 0;
+}
+.align-right {
+  margin: 0 0 10px 10px;
+}
+.align-center { 
+  margin: 10px;
+}
+
+[data-media-wrapper] {
+  .align-center {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+// -------------------------------------
+// Pseudo headers
+// -------------------------------------
+.h4 {
+  font-size: 18px;
+  @include breakpoint(medium) {
+    font-size: 25px;
+  }
+}
+
+h2,
+h3,
+h4,
+h5 {
+  .sidebar-secondary-title {
+    font-size: 15px;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+}
+
+// -------------------------------------
+// Podbarvení
+// -------------------------------------
+.bg-text {
+  padding: 5px 10px;
+  display: block;
+  @include clear-after;
+  a {
+    color: $white;
+    text-decoration: underline;
+    &:hover {
+      color: $white;
+      text-decoration: underline;  
+    }
+  }
+  &.bg-orange {    
+    background-color: $alert-orange;
+    color: $white;    
+  }
+  &.bg-red {    
+    background-color: $red;
+    color: $white;
+  }
+  &.bg-darkred {    
+    background-color: $darkred;
+    color: $white;
+  }
+  &.bg-blue {    
+    background-color: $blue;
+    color: $white;
+  }
+  &.bg-darkblue {    
+    background-color: $darkblue;
+    color: $white;
+  }
+  &.bg-green {    
+    background-color: $green;
+    color: $white;
+  }
+  &.bg-grey {    
+    background-color: $gainsboro;
+    color: $black;
+    a {
+      color: $black;
+      &:hover {
+        color: $black;  
+      }
+    }
+  }
+  .bg-black {    
+    background-color: $black;
+    color: $white;
+  }
+}
+
+// -------------------------------------
+// Main content
+// -------------------------------------
+.block-bezport-content {
+  h2 {  
+    font-size: 22px;
+    color: $red;
+  }
+  h3 {
+    font-size: 20px;
+    color: $blue;
+  }
+  h4 {
+    font-size: 18px; 
+    color: $red;
+  }
+  h5 {
+    font-size: 16px; 
+    color: $blue;
+  }
+  h6 {
+    font-size: 14px; 
+    color: $red;
+  }
+  p,
+  ul:not(.pagination):not(.tabs) {
+    li {
+      a {
+        color: $primary-link-color;
+        text-decoration: underline;
+        &:hover,
+        &:focus {
+          color: $secondary-link-color;
+          text-decoration: none;  
+        }
+      }
+    }    
+  }  
+  table {
+    a {
+      color: $primary-link-color;
+      text-decoration: underline;
+      &:hover,
+      &:focus {
+        color: $secondary-link-color;
+        text-decoration: none;  
+      }
+    }  
+  }
+}
+
+// -------------------------------------
+// Fix DIV (fake P) in content
+// -------------------------------------
+body.page-node-type-page {
+  .block-bezport-content {
+    div:not(.grid-x):not(.cell):not([data-media-wrapper]) {
+      @extend p; 
+      a {
+        color: $primary-link-color;
+        text-decoration: underline;
+        &:hover,
+        &:focus {
+          color: $secondary-link-color;
+          text-decoration: none;  
+        }  
+      }
+    }       
+  }
+}
+
+// -------------------------------------
+// Unordered list in content
+// -------------------------------------
+body:not(.node--type-contact-person):not(.node--type-contact-subject) {
+  .block-bezport-content {
+    ul:not(.pagination):not(.tabs):not(.menu):not(.no-arrow-list):not(.content-attachments):not(.contextual-links) {
+      li {
+        list-style-image: $chevron-right-blue-png; 
+        margin-bottom: 8px;
+        &:last-child {
+          margin-bottom: 0;  
+        }
+      }      
+    }  
+  }
+}
+
+// -------------------------------------
+// Unordered list in sidebar
+// -------------------------------------
+.sidebar-common-block-editable {
+  .block-content {
+    ul {
+      li {
+        list-style-image: $chevron-right-blue-png; 
+        margin-bottom: 3px;
+        &:last-child {
+          margin-bottom: 0;  
+        }
+      }  
+    }
+  }
+}
+
+// -------------------------------------
+// Custom
+// -------------------------------------
+.display-as-block {
+  display: block;
+}
+
+.icon-left {
+  float: left;
+  font-size: 30px;
+  padding: 5px 10px 0 0;
+}
+
+// -------------------------------------
+// Zurb Foundation Callout
+// -------------------------------------
+.callout {
+  &.alert {
+    p {
+      &:last-of-type {
+        margin-bottom: 0;
+      }  
+    }
+  }
+}
+
+// -------------------------------------
+// Img full height
+// -------------------------------------
+.img-fullheight-wrapper {  
+  position: relative;
+  .img-fullheight {
+    position: absolute; 
+    top: 0;
+    bottom: 0;
+    height: 100% !important;    
+  }
+}
+
+// -------------------------------------
+// Label
+// -------------------------------------
+.label {
+  &.common-border {
+    border: 1px solid $monsoon;
+    color: $charcoal; 
+  }
+  &.green,
+  &.published,
+  &.orange,
+  &.waiting-approval {
+    color: $white;
+  }  
+}
+
+// -------------------------------------
+// Nodefiles links
+// -------------------------------------
+.nodefiles-link-wrapper {
+  .file-ext-icon {
+    display: inline;
+  }
+  a {
+    display: inline;  
+  }
+}
+
+// -------------------------------------
+// Colorbox (registrace stylů)
+// -------------------------------------
+a.colorbox {
+  color: inherit;
+}
+
+img.colorboxed {
+  display: inline;
+}
+
+
+

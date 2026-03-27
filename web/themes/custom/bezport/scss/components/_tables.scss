@@ -1,0 +1,158 @@
+// -------------------------------------
+// Tables variants
+// -------------------------------------
+table:not(.stretched-image-graph) {
+  td {
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &.yellowhead,
+  &.table_b {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $yellow !important;
+    th {
+      background-color: $yellow !important;
+      color: $black;
+    }
+  }
+  &.redhead,
+  &.table_pd {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $red !important;
+    th {
+      background-color: $red !important;
+      color: $white;
+    }
+  }
+  &.slategrayhead {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $slategray !important; 
+    th {
+      background-color: $slategray !important;
+      color: $white;
+    }
+  }
+  &.bluehead,
+  &.table_c {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $pastelblue !important; 
+    th {
+      background-color: $pastelblue !important;
+      color: $white;
+    }
+  }
+  &.greenhead,
+  &.table_a {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $green !important;
+    th {
+      background-color: $green !important;
+      color: $white;
+    }  
+  }
+  &.blackhead {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $black !important;
+    th {
+      background-color: $black !important;
+      color: $white;
+    }  
+  }
+  &.violethead {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    border-left: 10px solid $violet !important;
+    th {
+      background-color: $violet !important;
+      color: $black;
+    }  
+  }
+  
+  th,
+  thead td {
+    font-size: rem-calc(12);
+    padding: 8px 6px 6px !important;
+    font-weight: $font-weight-regular !important; 
+    &.redth {
+      background-color: $red !important;
+      color: $white;  
+    }
+    &.blueth {
+      background-color: $blue !important;
+      color: $white;  
+    }
+    &.blackth {
+      background-color: $black !important;
+      color: $white;  
+    }
+    &.grayth {
+      background-color: $gainsboro !important;
+      color: $black;  
+    }
+    &.greenth {
+      background-color: $green !important;
+      color: $white;   
+    }
+  } 
+  & td {
+    font-size: 12px;
+    padding: 4px 6px 6px !important;
+    p {
+      font-size: rem-calc(12); 
+    }
+    &.redtd {
+      background-color: $red !important;
+      color: $white;  
+    }
+    &.bluetd {
+      background-color: $blue !important;
+      color: $white;  
+    }
+    &.blacktd {
+      background-color: $black !important;
+      color: $white;  
+    }
+    &.graytd {
+      background-color: $gainsboro !important;
+      color: $black;  
+    }
+    &.greentd {
+      background-color: $green !important;
+      color: $white;   
+    }
+  }
+}
+
+// -------------------------------------
+// Body field tables
+// -------------------------------------
+.field-node--body {
+  table {
+    border-collapse: collapse;
+    max-width: 99%;
+    th,
+    td {
+      border-collapse: collapse;
+      border: 1px solid $black;
+      p,
+      li {
+        font-size: rem-calc(12);
+      }
+    }    
+  }
+}
