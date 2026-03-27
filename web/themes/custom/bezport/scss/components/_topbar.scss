@@ -14,6 +14,9 @@
       padding-top: 5px;	  
     }
 	}
+  .top-bar {
+    padding: 0;
+  }
   @include breakpoint(large) {
     .title-bar {
       .menu-icon-title-wrapper {
@@ -22,7 +25,6 @@
       }
     }
     .top-bar {
-      padding: 0;
       .top-bar-right {
         ul.dropdown {
           display: flex;
@@ -66,36 +68,47 @@
   @include breakpoint(xlarge) {
     .top-bar {
       background-color: $elements-bg-color;
-    }
-  }
-  @include breakpoint(xxlarge) {   
-    .top-bar {
-        background-color: transparent;
-        background-image: linear-gradient(to right, $white 50%, $elements-bg-color 50%);
-        .top-bar-right {
-          width: 100%;
-          margin-left: calc((50% - 650px) + #{$top-bar-spacing-left});
-          margin-right: calc((50% - 650px) + #{$top-bar-spacing-right});
-          width: 100%;
-          padding: 0;
-          ul.dropdown {
-            li {
-              font-size: rem-calc(13);
-              &.menu-level-base {
-                &:first-child {
-                  a {
-                    padding-left: 20px;
-                  }  
-                }
-                &:last-child {
-                  a {
-                    padding-right: 20px;
-                  }  
+      .top-bar-right {
+        ul.dropdown {
+          li {
+            &.menu-level-base {
+              &:first-child {
+                a {
+                  padding-left: 20px;
+                }  
+              }
+              &:last-child {
+                a {
+                  padding-right: 20px;
+                }  
+              }
+              &.menu-item--active-trail {
+                & > a {
+                  @include box-shadow(inset 0 4px 0 0 $menu-active-trail-color); 
                 }
               }
             }
           }
-          &.dropdown-type-common {
+        }
+      }
+    }
+  }
+  @include breakpoint(xxlarge) {   
+    .top-bar {
+      background-color: transparent;
+      background-image: linear-gradient(to right, $white 50%, $elements-bg-color 50%);
+      .top-bar-right {
+        width: 100%;
+        margin-left: calc((50% - 650px) + #{$top-bar-spacing-left});
+        margin-right: calc((50% - 650px) + #{$top-bar-spacing-right});
+        width: 100%;
+        padding: 0;
+        ul.dropdown {
+          li {
+            font-size: rem-calc(13);
+          }
+        }
+        &.dropdown-type-common {
           ul.dropdown {
             @include flex;
             @include flex-align(right, null);  
@@ -109,10 +122,8 @@
         }
       }
     } 
-
   }
 }
-
 
 /* HAMBURGER GLOBAL */
 #top-bar-sticky-container {
@@ -213,3 +224,77 @@
     }
   }
 }
+
+/* DRILLDOWN */
+ul.drilldown {
+  a {
+    color: $white;
+    background-color: $primary-link-color;
+    padding: 15px;
+    border-bottom: 1px solid rgba($white, .1);
+    font-size: rem-calc(13);
+    text-transform: uppercase;
+    transition: all .2s ease;
+    &:hover,
+    &.is-active { 
+      background-color: $secondary-link-color;  
+    }
+  }
+  .is-drilldown-submenu-parent {
+    & > a {
+      &:after {
+        border-color: transparent transparent transparent $white;
+        right: 10px;
+      }
+      &:hover,
+      &.is-active {
+        &:after {
+          border-color: transparent transparent transparent $white;  
+        }
+      }
+    }
+  }
+  .js-drilldown-back {
+    & > a {
+      &:before {
+        border-color: transparent $white transparent transparent;
+      }
+      &:hover {
+        &:before {
+          border-color: transparent $white transparent transparent;
+        }  
+      }
+    }
+  }
+  .is-drilldown-submenu {
+    a {
+      padding: 15px 10px;
+    }
+  }
+}
+
+/* DROPDOWN SUBMENU */
+.main-menu-container {
+  ul.is-dropdown-submenu {
+    border: 0 none;
+    li {
+      a {
+        background-color: $secondary-link-color;
+        color: $white;
+        font-size: 13px;
+        font-weight: $font-weight-regular;
+        padding: 15px 16px;
+        transition: all .2s ease;
+        &.is-active {
+          background-color: $primary-link-color;
+          color: $white;  
+        }
+        &:hover {
+          background-color: $primary-link-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+

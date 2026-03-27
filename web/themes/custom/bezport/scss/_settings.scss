@@ -149,15 +149,18 @@ $white: #fefefe;
 $primary-link-color: var(--primary-link-color);
 $secondary-link-color: var(--secondary-link-color);
 $elements-bg-color: var(--elements-bg-color);
+$menu-active-trail-color: var(--menu-active-trail-color);
 
 body { 
   --primary-link-color: #{$blue};
   --secondary-link-color: #{$darkblue};
   --elements-bg-color: #{$blue};
+  --menu-active-trail-color: #{$red};
   &.user-logged-in {
     --primary-link-color: #{$red};
     --secondary-link-color: #{$darkred};
     --elements-bg-color: #{$red};
+    --menu-active-trail-color: #{$white};
   }
 }
 
