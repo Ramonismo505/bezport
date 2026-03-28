@@ -1,1 +1,16 @@
-// Non-modular or client styles for .l-footer region.
+// -------------------------------------
+// Above footer region
+// -------------------------------------
+#content-bottom-container {
+  background-color: $white;
+  padding: 20px 0;
+  margin-top: 30px;
+  border-top: 4px solid $blue;  
+  @include breakpoint(medium) {
+    margin-top: 40px;    
+  }
+  @include breakpoint(large) {
+    margin-top: 60px;
+    padding: 30px 0;
+  }
+}

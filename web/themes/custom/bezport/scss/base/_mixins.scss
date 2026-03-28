@@ -250,16 +250,17 @@
   }
 }
 
-/* FONTAWESOME PSEUDOELEMENT */
+// FONTAWESOME PSEUDOELEMENT */
+// use: @include fontawesome-pseudoelement(\f054);
 @mixin fontawesome-pseudoelement($unicode) {
   display: inline-block;
-  text-indent: 0;    
+  text-indent: 0;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  font: var(--fa-font-solid);  
-  content: unquote("\"#{ $unicode }\"");
+  font: var(--fa-font-solid);
+  content: $unicode;
 }
 
 // HEADER SIZE

@@ -1,0 +1,109 @@
+p {
+  font-size: 14px;  
+}
+
+li {
+  font-size: 14px;
+}
+
+// -------------------------------------
+// Chevron right placeholder
+// -------------------------------------
+%chevron-right-ico {
+  @include fontawesome-pseudoelement('\f054'); 
+}
+
+// -------------------------------------
+// Sqare right placeholder
+// -------------------------------------
+%square-ico {
+   @include fontawesome-pseudoelement('\f0c8');
+  font-size: 6px;
+}
+
+// -------------------------------------
+// Lists
+// -------------------------------------
+ul {
+  &.chevron-blue {
+    @include clear-list;
+    margin: 0;
+    li {
+      padding-left: 15px;
+      position: relative;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-bottom: 0;  
+      }
+      &:before {
+        @extend %chevron-right-ico;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        color: $linkblue;
+        font-size: rem-calc(11);
+      }
+    }
+  }
+  &.square-blue {
+    @include clear-list;
+    margin: 0;  
+    li {
+      padding-left: 15px;
+      position: relative;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-bottom: 0;  
+      }
+      &:before {
+        @extend %square-ico;
+        position: absolute;
+        top: 6px;
+        left: 0;
+        color: $linkblue;        
+      }
+    }
+  }
+  &.numbers {
+    @include clear-list;
+    margin: 0;  
+    & li {
+      text-transform: uppercase;
+      strong {
+        display: inline-block;
+        color: $red;
+        padding-right: 10px;
+        font-size: 18px;
+        position: relative;
+        top: 3px;
+      }
+      a {
+        color: $black;
+        text-decoration: none;
+        &:hover {
+          color: $black;
+          text-decoration: underline;  
+        }
+      }
+    }
+  }
+  &.inline-delimited {
+    @include clear-list;
+    margin: 0;
+    li {
+      display: inline-block;
+      &:after {
+        content: '|';
+        color: $black;
+        display: inline-block;
+        padding: 0 3px 0 8px;
+      }  
+      &:last-child {
+        &:after {
+          display: none;  
+        }
+      }
+    }
+  }
+}
+

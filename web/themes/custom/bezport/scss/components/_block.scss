@@ -1,0 +1,107 @@
+// -------------------------------------
+// Block Info above footer
+// -------------------------------------
+.block-info-above-footer {
+  .block-wrapper {
+    .cell {
+      margin-bottom: 20px;
+      .item-content {
+        p, ol, ul {
+          margin: 0;
+          padding: 0;
+        }
+        .field--block-content-body {
+          &:has(img) {
+            text-align: center;
+          }
+          h2 {
+            margin: 0 0 5px;
+            font-weight: $font-weight-regular;
+            color: $blue;
+            font-size: rem-calc(16);
+          }
+          p, li {
+            font-size: rem-calc(13);  
+          }
+          a {
+            color: $blue;   
+            &:hover,
+            &:focus {
+              color: $darkblue;  
+            }
+          }
+          img.logo-kvk-above-footer {
+            height: 91px;
+            width: auto;
+          }
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  @include breakpoint(medium) {
+    .block-wrapper {
+      .cell {
+        &:nth-last-child(2) {
+          margin-bottom: 0;  
+        }
+        .item-content {
+          .field--block-content-body {
+            &:has(img) {
+              text-align: left;
+            }
+          }
+        }
+        &.cell-1 {
+          .item-content {
+            padding: 0 15px 20px 0;  
+          }
+        }
+        &.cell-2 {
+          .item-content {
+            padding: 0 0 20px 15px;  
+          }
+        }
+        &.cell-3 {
+          .item-content {
+            padding: 0 15px 0 0;  
+          }
+        }
+        &.cell-4 {
+          .item-content {
+            padding: 0 0 0 15px;  
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint(xlarge) {
+    .block-wrapper {  
+      .cell {
+        margin-bottom: 0;
+        &.cell-1 {
+          .item-content {
+            padding: 0 20px 0 0;  
+          }
+        }
+        &.cell-2 {
+          .item-content {
+            padding: 0 10px;  
+          }
+        }
+        &.cell-3 {
+          .item-content {
+            padding: 0 10px;  
+          }
+        }
+        &.cell-4 {
+          .item-content {
+            padding: 0 0 0 20px;  
+          }
+        }        
+      }
+    }
+  }
+}
