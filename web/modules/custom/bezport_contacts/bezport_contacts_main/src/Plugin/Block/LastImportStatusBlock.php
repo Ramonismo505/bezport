@@ -5,19 +5,17 @@ declare(strict_types=1);
 namespace Drupal\bezport_contacts_main\Plugin\Block;
 
 use Drupal\bezport_contacts_main\Service\ImportStateManager;
+use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * Shows last import start/end + type.
- *
- * @Block(
- *   id = "bezport_contacts_last_import_status",
- *   admin_label = @Translation("Bezport Contacts: poslední import"),
- *   category = @Translation("Bezport Contacts")
- * )
- */
+#[Block(
+  id: 'bezport_contacts_last_import_status',
+  admin_label: new TranslatableMarkup('Bezport Contacts: poslední import'),
+  category: new TranslatableMarkup('Bezport Contacts')
+)]
 final class LastImportStatusBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   public function __construct(
@@ -41,35 +39,31 @@ final class LastImportStatusBlock extends BlockBase implements ContainerFactoryP
   public function build(): array {
     $state = $this->importState->getState();
 
-    $start = $this->importState->formatCzDateTime($state['start']);
-    $end = $this->importState->formatCzDateTime($state['end']);
-    $type = $state['type'] ?: '';
+    $start = $this->importState->formatCzDateTime($state['start'] ?? '');
+    $end = $this->importState->formatCzDateTime($state['end'] ?? '');
+    $type = $state['type'] ?? '';
 
-    $text = $this->t('Poslední import: zatím žádný.');
-    if ($start !== '') {
-      $range = $start;
-      if ($end !== '') {
-        $range .= ' - ' . $end;
-      }
-      else {
-        $range .= ' - ' . $this->t('probíhá');
-      }
-
-      $suffix = $type !== '' ? (', ' . $type) : '';
-
-      $text  = '<p>';
-      $text .= $this->t('Poslední import: @range@suffix', [
-        '@range' => $range,
-        '@suffix' => $suffix,
-      ]);
-      $text  .= '</p>';
-
+    // Rychlé opuštění, pokud nemáme data.
+    if ($start === '') {
+      return [
+        '#markup' => $this->t('Poslední import: zatím žádný.'),
+        '#cache' => ['max-age' => 0],
+      ];
     }
 
+    $range = $start;
+    $range .= ($end !== '') ? ' - ' . $end : ' - ' . $this->t('probíhá');
+    $suffix = $type !== '' ? (', ' . $type) : '';
+
     return [
-      '#markup' => $text,
+      '#type' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => $this->t('Poslední import: @range@suffix', [
+        '@range' => $range,
+        '@suffix' => $suffix,
+      ]),
       '#cache' => [
-        'max-age' => 0,
+        'max-age' => 0, // TODO: Vyměnit za cache tags
       ],
     ];
   }

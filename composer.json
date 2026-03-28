@@ -22,6 +22,7 @@
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.6",
+        "drupal/anchor_link": "^3.0",
         "drupal/antibot": "^2.0",
         "drupal/auto_entitylabel": "^3.4",
         "drupal/auto_entityqueue": "^3.0",
@@ -36,6 +37,7 @@
         "drupal/body_node_id_class": "^2.0",
         "drupal/cancel_button": "^1.5",
         "drupal/chosen": "^5.0",
+        "drupal/ckeditor5_paste_filter": "^1.1",
         "drupal/ckeditor5_plugin_pack": "^1.5",
         "drupal/ckeditor5_premium_features": "^1.8",
         "drupal/ckeditor5_show_blocks": "^1.1",
@@ -58,6 +60,8 @@
         "drupal/ds": "^3.34",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/edit_uuid": "^3.0",
+        "drupal/editor_advanced_image": "^3.1",
+        "drupal/embedded_content": "^2.0",
         "drupal/entity_clone": "^2.1@beta",
         "drupal/entity_reference_revisions": "^1.14",
         "drupal/entity_reference_tree": "^2.4",
@@ -94,6 +98,7 @@
         "drupal/meaofd": "^1.1",
         "drupal/menu_block": "^1.14",
         "drupal/module_filter": "^5.0",
+        "drupal/nbsp": "^3.1",
         "drupal/optional_end_date": "^2.0@beta",
         "drupal/paragraphs": "^1.20",
         "drupal/paragraphs_features": "^2.2",
@@ -209,7 +214,8 @@
                 "web/modules/contrib/chosen/composer.libraries.json",
                 "web/modules/contrib/webform/composer.libraries.json",
                 "web/modules/contrib/fontawesome/composer.libraries.json",
-                "web/modules/contrib/better_exposed_filters/composer.libraries.json"
+                "web/modules/contrib/better_exposed_filters/composer.libraries.json",
+                "web/modules/contrib/anchor_link/composer.libraries.json"
             ]
         },
         "drupal-core-project-message": {
