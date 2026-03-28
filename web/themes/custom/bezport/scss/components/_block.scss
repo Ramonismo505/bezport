@@ -105,3 +105,60 @@
     }
   }
 }
+
+// -------------------------------------
+// Footer
+// -------------------------------------
+.block-footer {
+  p, ol, ul {
+    margin: 0;
+    font-size: rem-calc(13);
+  }
+  a {
+    color: $black;
+    text-decoration: none;
+    &:hover {
+      color: $black;
+      text-decoration: underline;  
+    }
+  }
+  strong {
+    font-weight: $font-weight-medium;
+  }
+  .cell {
+    text-align: center;
+    padding-bottom: 15px;
+  }
+   @include breakpoint(large) {
+    .cell {
+      &:last-child {
+        padding-bottom: 0;  
+      }
+      @include flex;
+      text-align: left; 
+      &.cell-left {
+        @include flex-align(left, middle);
+      }
+      &.cell-mid {
+        @include flex-align(right, middle);  
+      }
+      &.cell-right {
+        @include flex-align(center, middle);  
+      }
+    }
+  }
+  @include breakpoint(xlarge) {
+    .cell {
+      padding-bottom: 0; 
+      &.cell-left {
+        @include flex-align(left, middle);
+      }
+      &.cell-mid {
+        @include flex-align(center, middle);  
+      }
+      &.cell-right {
+        @include flex-align(right, middle);  
+      }
+    }
+  }
+}
