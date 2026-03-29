@@ -157,6 +157,7 @@
             "php-http/discovery": true,
             "php-tuf/composer-integration": true,
             "phpstan/extension-installer": true,
+            "tbachert/spi": true,
             "wikimedia/composer-merge-plugin": true
         },
         "sort-packages": true
@@ -244,5 +245,8 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "drupal/core-dev": "^11.3"
     }
 }

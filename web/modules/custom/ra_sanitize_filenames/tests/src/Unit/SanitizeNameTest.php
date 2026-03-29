@@ -86,7 +86,7 @@ class SanitizeNameTest extends UnitTestCase {
 
     // a, b, c chceme nahradit pomlčkou (-).
     $filename = 'abracadabra.txt';
-    $expected = '-r---d--r-.txt'; 
+    $expected = '--r---d--r-.txt';
 
     $this->assertSame($expected, $this->sanitizeName->sanitizeFilename($filename));
   }
