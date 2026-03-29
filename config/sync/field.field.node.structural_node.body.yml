@@ -1,0 +1,28 @@
+uuid: 9b4d2de4-b5eb-40ad-8906-c8ef4ceb0d63
+langcode: cs
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - filter.format.full_html
+    - node.type.structural_node
+  module:
+    - text
+_core:
+  default_config_hash: KHu9I-pR4FnP79crRJ5gVD_1mKGSZcJsdIm9bn64iFg
+id: node.structural_node.body
+field_name: body
+entity_type: node
+bundle: structural_node
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary

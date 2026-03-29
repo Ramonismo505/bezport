@@ -1,0 +1,18 @@
+uuid: d5b1d0c5-8182-4cf0-a7b9-f9e2c6199e56
+langcode: cs
+status: true
+dependencies:
+  theme:
+    - bezport
+id: bezport_primary_admin_actions
+theme: bezport
+region: highlighted
+weight: -1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

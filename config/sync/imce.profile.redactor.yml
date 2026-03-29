@@ -1,0 +1,29 @@
+uuid: e940ec3b-2d00-457d-ac7a-c32a1965d935
+langcode: cs
+status: true
+dependencies: {  }
+id: redactor
+label: 'Profil redaktora'
+description: 'Konfigurace pro redaktory'
+conf:
+  usertab: true
+  extensions: '*'
+  maxsize: 0.0
+  quota: 0.0
+  maxwidth: null
+  maxheight: null
+  replace: 0
+  thumbnail_style: ''
+  thumbnail_grid_style: false
+  ignore_usage: false
+  url_alter: false
+  image_extensions: 'jpg jpeg png gif webp'
+  lazy_dimensions: true
+  folders:
+    -
+      path: imce/uploads
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        upload_files: true
+        resize_images: true

@@ -1,0 +1,31 @@
+uuid: 6b4b2796-55a0-4be3-8d84-296fb13995ab
+langcode: cs
+status: true
+dependencies:
+  config:
+    - field.field.node.structural_node.body
+    - field.field.node.structural_node.field_test
+    - field.field.node.structural_node.layout_builder__layout
+    - node.type.structural_node
+  module:
+    - text
+    - user
+id: node.structural_node.default
+targetEntityType: node
+bundle: structural_node
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_test: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true
+  uuid: true

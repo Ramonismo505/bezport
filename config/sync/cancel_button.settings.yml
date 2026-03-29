@@ -1,0 +1,246 @@
+_core:
+  default_config_hash: ExX89aMRMD4wWyXNiU9UVOyUV8HlVyiyE3Pe3yPqdmc
+entity_type_cancel_destination:
+  default:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  comment:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  block:
+    path: /admin/structure/block
+    enabled: true
+    only_add_form_enabled: false
+  block_content_type:
+    path: /admin/structure/block-content
+    enabled: true
+    only_add_form_enabled: false
+  comment_type:
+    path: /admin/structure/comment
+    enabled: true
+    only_add_form_enabled: false
+  contact_form:
+    path: /admin/structure/contact
+    enabled: true
+    only_add_form_enabled: false
+  editor:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  field_storage_config:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  field_config:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  file:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  filter_format:
+    path: /admin/config/content/formats
+    enabled: true
+    only_add_form_enabled: false
+  image_style:
+    path: /admin/config/media/image-styles
+    enabled: true
+    only_add_form_enabled: false
+  node_type:
+    path: /admin/structure/types
+    enabled: true
+    only_add_form_enabled: false
+  node:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  shortcut_set:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  shortcut:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  action:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  menu:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  taxonomy_term:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  taxonomy_vocabulary:
+    path: /admin/structure/taxonomy
+    enabled: true
+    only_add_form_enabled: false
+  tour:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  user_role:
+    path: /admin/people/roles
+    enabled: true
+    only_add_form_enabled: false
+  user:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  menu_link_content:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  view:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  base_field_override:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  date_format:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  entity_view_mode:
+    path: /admin/structure/display-modes/view
+    enabled: true
+    only_add_form_enabled: false
+  entity_form_display:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  entity_view_display:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  entity_form_mode:
+    path: /admin/structure/display-modes/form
+    enabled: true
+    only_add_form_enabled: false
+  backup_migrate_schedule:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  backup_migrate_settings:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  backup_migrate_source:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  backup_migrate_destination:
+    path: /
+    enabled: false
+    only_add_form_enabled: false
+  block_content_basic:
+    path: /
+  block_content:
+    enabled: true
+    only_add_form_enabled: false
+  block_visibility_group:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  entity_queue:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  entity_subqueue:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  language_content_settings:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  configurable_language:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  layout_builder_style:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  layout_builder_style_group:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  media_audio:
+    path: /
+  media_document:
+    path: /
+  media_image:
+    path: /
+  media_remote_video:
+    path: /
+  media_video:
+    path: /
+  media:
+    enabled: true
+    only_add_form_enabled: false
+  media_type:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  node_article:
+    path: /
+  node_page:
+    path: /
+  path_alias:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  behavior_settings:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  search_page:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  shortcut_default:
+    path: /
+  taxonomy_term_tags:
+    path: /
+  ultimate_cron_job:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  webform:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  webform_options:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  webform_submission_contact:
+    path: /
+  webform_submission:
+    enabled: true
+    only_add_form_enabled: false
+  workflow:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  pathauto_pattern:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  paragraphs_type:
+    path: /
+    enabled: true
+    only_add_form_enabled: false
+  paragraph:
+    path: /
+    enabled: true
+    only_add_form_enabled: false

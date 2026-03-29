@@ -1,0 +1,29 @@
+uuid: 5fb034f5-5067-4f92-97c2-a8a5074b1163
+langcode: cs
+status: true
+dependencies:
+  module:
+    - content_lock
+title: 'Default cron handler'
+id: content_lock_cron
+weight: -10
+module: content_lock
+callback: 'content_lock#cron'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '*/5+@ * * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

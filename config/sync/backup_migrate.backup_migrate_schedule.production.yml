@@ -1,0 +1,13 @@
+uuid: 3dd8bc75-80cd-4ec9-a41f-d3c35defd047
+langcode: cs
+status: true
+dependencies: {  }
+id: production
+label: Produkce
+enabled: false
+keep: 5
+period: 86400
+cron: null
+source_id: default_db
+destination_id: private_files
+settings_profile_id: compressed

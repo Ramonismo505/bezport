@@ -1,0 +1,8 @@
+uuid: dd0df449-107f-4733-a2dc-53d86502cfbf
+langcode: cs
+status: true
+dependencies: {  }
+id: date_time_dotted_no_sec
+label: 'Date time dotted no sec'
+locked: false
+pattern: 'j. n. Y H:i'

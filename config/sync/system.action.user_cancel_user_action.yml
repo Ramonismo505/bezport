@@ -1,0 +1,13 @@
+uuid: 1d566a71-88da-4736-bf1c-9e7cef1d5b0f
+langcode: cs
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: nvrL9bFilzBvm2bjO9rQnFDpBA7dBBUjShSSt6NS-DU
+id: user_cancel_user_action
+label: 'Zrušit vybrané uživatelské účty'
+type: user
+plugin: user_cancel_user_action
+configuration: {  }

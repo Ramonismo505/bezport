@@ -1,0 +1,10 @@
+uuid: 0c5680db-4ed7-4116-b90c-10342c96ce8d
+langcode: cs
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pQP5iQy4SdhAMVcjDUncCfkJmTofnHVtXrsMzx4k6Yk
+id: basic
+label: 'Základní blok'
+revision: false
+description: 'Základní blok obsahuje nadpis a text.'

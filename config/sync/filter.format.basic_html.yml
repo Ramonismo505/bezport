@@ -1,0 +1,63 @@
+uuid: 2cced075-d34b-4637-be7f-14c84813c090
+langcode: cs
+status: true
+dependencies:
+  module:
+    - editor
+    - pathologic
+_core:
+  default_config_hash: mclCbTlJwWJORez4Y1eX2MqA0aGjSMAoJb3TaBABcK8
+name: 'Základní HTML'
+format: basic_html
+weight: -9
+filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 11
+    settings: {  }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: true
+    weight: 7
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: 8
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <code> <blockquote> <a href target rel title id class download hreflang type data-* aria-*> <ul type> <ol type start> <li> <img src alt height width data-entity-uuid data-entity-type data-caption data-align>'
+      filter_html_help: false
+      filter_html_nofollow: false
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: true
+    weight: 9
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
+    settings: {  }
+  filter_pathologic:
+    id: filter_pathologic
+    provider: pathologic
+    status: false
+    weight: 50
+    settings:
+      settings_source: global
+      local_settings:
+        protocol_style: full
+        local_paths: ''
+        keep_language_prefix: true

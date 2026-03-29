@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: short_datetime_stamp
+label: 'Short datetime stamp'
+locked: false
+pattern: ymd_h-i

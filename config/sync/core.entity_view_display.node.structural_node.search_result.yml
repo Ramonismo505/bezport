@@ -1,0 +1,79 @@
+uuid: a23cd3b4-bebb-4596-b7ea-69eb950709f6
+langcode: cs
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.structural_node.body
+    - field.field.node.structural_node.field_test
+    - field.field.node.structural_node.layout_builder__layout
+    - node.type.structural_node
+  module:
+    - ds
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  ds:
+    layout:
+      id: ralayouts_search_result_simple
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      srs_title:
+        - node_title
+      search_result_excerpt:
+        - search_api_excerpt
+      search_result_info:
+        - 'bundle_field:node'
+    fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 0
+        label: hidden
+        formatter: default
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          link_target: ''
+          wrapper: h3
+          class: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.structural_node.search_result
+targetEntityType: node
+bundle: structural_node
+mode: search_result
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: search_result_excerpt
+hidden:
+  body: true
+  field_test: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  uuid: true

@@ -1,0 +1,35 @@
+uuid: 2e8ab364-9292-4cbe-8302-ff6710920d70
+langcode: cs
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - ra_import_record
+    - scheduler
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+  ra_import_record:
+    enabled: 1
+name: 'Strukturovaná stránka'
+type: structural_node
+description: null
+help: null
+new_revision: false
+preview_mode: 0
+display_submitted: false

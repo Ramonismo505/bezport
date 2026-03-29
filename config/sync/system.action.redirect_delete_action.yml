@@ -1,0 +1,16 @@
+uuid: b674cc1b-45e8-4c1f-8e3f-33bea4b6fb4c
+langcode: cs
+status: true
+dependencies:
+  module:
+    - redirect
+  enforced:
+    module:
+      - redirect
+_core:
+  default_config_hash: vcnRZRvBqTbK3nZ2M4_lKPlEGc8GjPzgaqapYUfyX8M
+id: redirect_delete_action
+label: 'Smazat přesměrování'
+type: redirect
+plugin: redirect_delete_action
+configuration: {  }

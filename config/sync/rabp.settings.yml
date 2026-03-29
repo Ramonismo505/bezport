@@ -1,0 +1,19 @@
+_core:
+  default_config_hash: u_JKodIOSqaBWKTlzsPq1KT2Gz_PTGT4JmHyRomwUys
+small: 0
+smedium: 320
+medium: 480
+large: 768
+xlarge: 1024
+xxlarge: 1360
+xxxlarge: 1600
+position: bottomleft
+status: true
+foreground: '#000000'
+background_small: '#e6e6fa'
+background_smedium: '#f0c0a4'
+background_medium: '#7fffd4'
+background_large: '#ffdab9'
+background_xlarge: '#f3f400'
+background_xxlarge: '#8cc7ff'
+background_xxxlarge: '#ffcd6f'

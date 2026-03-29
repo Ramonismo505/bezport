@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  # Služba pro sanitizaci
+  Drupal\ra_sanitize_filenames\SanitizeName: ~
+
+  # Event subscriber pro odchycení uploadu
+  Drupal\ra_sanitize_filenames\EventSubscriber\FileUploadSubscriber: ~

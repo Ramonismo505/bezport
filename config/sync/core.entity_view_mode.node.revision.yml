@@ -1,0 +1,17 @@
+uuid: 5263ec91-7bbf-45b5-82e7-161653926d51
+langcode: cs
+status: false
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ds_extras
+      - node
+_core:
+  default_config_hash: 9KZ3WmwficPZQW4KRu0DdKX2V9A1Xiz5LFFm2NHg4_A
+id: node.revision
+label: Revize
+description: null
+targetEntityType: node
+cache: true

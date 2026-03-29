@@ -1,0 +1,36 @@
+uuid: 6f795b87-cdb6-4a29-baee-10c2c6e8aff4
+langcode: cs
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: KNp52LgSh0v8JwlaFHS2czHB_ndfXlxImgsQiOZtYkU
+id: admin
+label: 'Profil administrátora'
+description: 'Konfigurace pro administrátory'
+conf:
+  usertab: true
+  extensions: '*'
+  maxsize: 0.0
+  quota: 0.0
+  maxwidth: 0
+  maxheight: 0
+  replace: 0
+  thumbnail_style: ''
+  thumbnail_grid_style: false
+  ignore_usage: false
+  url_alter: false
+  image_extensions: 'jpg jpeg png gif webp'
+  lazy_dimensions: true
+  folders:
+    -
+      path: imce/uploads
+      permissions:
+        all: true
+    -
+      path: imce/blocks
+      permissions:
+        all: true
+    -
+      path: imce/manuals
+      permissions:
+        all: true

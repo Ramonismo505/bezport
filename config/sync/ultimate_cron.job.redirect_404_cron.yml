@@ -1,0 +1,17 @@
+uuid: 45c844fb-d4cf-4c79-b158-fead7f3d9012
+langcode: cs
+status: true
+dependencies:
+  module:
+    - redirect_404
+title: 'Delete old 404 errors'
+id: redirect_404_cron
+weight: 0
+module: redirect_404
+callback: 'redirect_404#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

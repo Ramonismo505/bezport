@@ -1,0 +1,25 @@
+uuid: 589bf1ab-01b7-4848-b6a5-d049a98040b2
+langcode: cs
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - bezport
+id: bezport_main_menu
+theme: bezport
+region: header_menu
+weight: -2
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Hlavní navigace'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility: {  }

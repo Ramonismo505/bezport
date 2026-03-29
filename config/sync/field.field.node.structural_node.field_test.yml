@@ -1,0 +1,21 @@
+uuid: ff876db9-8bb8-450a-8204-21ada4356ac9
+langcode: cs
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_test
+    - node.type.structural_node
+id: node.structural_node.field_test
+field_name: field_test
+entity_type: node
+bundle: structural_node
+label: Testovací
+description: "Je to pouze označení\r\nTato entita je vytvořena pro testovaání.\r\nNení důležitá pro web, může být smazána. \r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Zapnuto
+  off_label: Vypnuto
+field_type: boolean

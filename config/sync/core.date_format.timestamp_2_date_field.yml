@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: timestamp_2_date_field
+label: 'Timestamp 2 date field'
+locked: false
+pattern: 'Y-m-d\TH:i:s'

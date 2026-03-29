@@ -1,0 +1,23 @@
+uuid: 5540f677-b738-49fc-b682-a8ff4032ecef
+langcode: cs
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bezport
+id: site_branding
+theme: bezport
+region: header
+weight: -3
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

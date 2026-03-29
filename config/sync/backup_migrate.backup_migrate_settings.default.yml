@@ -1,0 +1,53 @@
+uuid: 8d185348-b0d0-429d-b05c-19d74d19643a
+langcode: cs
+status: true
+dependencies: {  }
+id: default
+label: Výchozí
+config:
+  namer:
+    filename: bezport
+    timestamp: true
+    timestamp_format: Y-m-d_H-i-s
+  compressor:
+    compression: none
+  utils:
+    site_offline: false
+  metadata:
+    description: ''
+  db_exclude:
+    exclude_tables: {  }
+    nodata_tables:
+      cache_bootstrap: cache_bootstrap
+      cache_config: cache_config
+      cache_container: cache_container
+      cache_data: cache_data
+      cache_default: cache_default
+      cache_discovery: cache_discovery
+      cache_dynamic_page_cache: cache_dynamic_page_cache
+      cache_entity: cache_entity
+      cache_library: cache_library
+      cache_menu: cache_menu
+      cache_page: cache_page
+      cache_render: cache_render
+      cache_signal: cache_signal
+      cache_toolbar: cache_toolbar
+      cache_ultimate_cron_logger: cache_ultimate_cron_logger
+      sessions: sessions
+      watchdog: watchdog
+  private_files_exclude:
+    exclude_filepaths:
+      - backup_migrate
+  public_files_exclude:
+    exclude_filepaths:
+      - js
+      - css
+      - php
+      - styles
+      - 'config_*'
+      - .htaccess
+  notify:
+    notify_success_enable: 0
+    notify_success_email: info@bezport.cz
+    notify_failure_enable: 0
+    notify_failure_email: info@bezport.cz

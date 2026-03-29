@@ -1,0 +1,6 @@
+uuid: d03a61d1-bcee-484f-a384-d31a252002ad
+langcode: cs
+status: true
+dependencies: {  }
+id: administrator
+label: Administrator

@@ -1,0 +1,80 @@
+uuid: 524473f3-e798-4369-9e24-3c36cd48e685
+langcode: cs
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.structural_node.body
+    - field.field.node.structural_node.field_test
+    - field.field.node.structural_node.layout_builder__layout
+    - node.type.structural_node
+  module:
+    - ds
+    - layout_builder
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  ds:
+    layout:
+      id: ds_reset
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+          ds_hidden: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      ds_content:
+        - node_title
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          link_target: ''
+          wrapper: h1
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.structural_node.search_index
+targetEntityType: node
+bundle: structural_node
+mode: search_index
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 1
+    region: ds_content
+hidden:
+  field_test: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true
+  uuid: true

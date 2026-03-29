@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: short
+label: 'Výchozí krátký formát data'
+locked: false
+pattern: 'd/m/Y - H:i'

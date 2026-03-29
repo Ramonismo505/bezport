@@ -1,0 +1,22 @@
+uuid: b3f96724-8b71-45b1-a8f6-1ce41054acd0
+langcode: cs
+status: true
+dependencies:
+  module:
+    - node
+id: structural_node
+label: 'Strukturovaná stránka'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  84ddc547-095a-4491-9152-5cf7496d3ec1:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 84ddc547-095a-4491-9152-5cf7496d3ec1
+    context_mapping:
+      node: node
+    bundles:
+      structural_node: structural_node
+selection_logic: and
+weight: -5
+relationships: {  }

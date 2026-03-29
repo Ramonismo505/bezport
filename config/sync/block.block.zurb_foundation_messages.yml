@@ -1,0 +1,22 @@
+uuid: 6479f651-83f9-4370-b8e4-d97157e39571
+langcode: cs
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - zurb_foundation
+_core:
+  default_config_hash: dqzHPrWKOFZg0C2LSS89u9zn02nkQbAjqMC5H5IMtgw
+id: zurb_foundation_messages
+theme: zurb_foundation
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Stavové zprávy'
+  label_display: '0'
+  provider: system
+visibility: {  }

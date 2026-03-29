@@ -1,0 +1,22 @@
+uuid: 801dc5d7-57f5-4b94-8e60-5cf3b3de858d
+langcode: cs
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bezport
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: bezport_content
+theme: bezport
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Obsah hlavní stránky'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,17 @@
+langcode: cs
+_core:
+  default_config_hash: L7Q6G9fWNFbrzMeBzG3gacQfIVAm_vKH7gUi3fgNSk8
+button_value: 'Uložit a editovat'
+button_weight: '0'
+gin_primary: true
+unpublish: false
+unpublish_new_only: false
+hide_default_save: false
+hide_default_publish: false
+hide_default_preview: false
+hide_default_delete: false
+enable_node_types_automatically: true
+node_types:
+  page: page
+  structural_node: structural_node
+save_button_text: ''

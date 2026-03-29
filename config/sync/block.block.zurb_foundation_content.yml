@@ -1,0 +1,22 @@
+uuid: efce2e8b-eef5-4f6f-ac34-9fc2353e49fd
+langcode: cs
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - zurb_foundation
+_core:
+  default_config_hash: XBQf58SiJCBnW9CRSUAWib8dt1wdIbeUAYTk5wlQLlQ
+id: zurb_foundation_content
+theme: zurb_foundation
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Obsah hlavní stránky'
+  label_display: '0'
+  provider: system
+visibility: {  }

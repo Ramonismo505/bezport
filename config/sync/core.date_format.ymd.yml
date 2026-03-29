@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: ymd
+label: 'Year month day Stamp'
+locked: false
+pattern: ymd

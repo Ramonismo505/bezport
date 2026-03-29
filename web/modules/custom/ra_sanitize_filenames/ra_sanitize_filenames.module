@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function ra_sanitize_filenames_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if ($form_id === 'system_file_system_settings') {
+    // Pro čtení v hook_form_alter postačí immutable config
+    $config = \Drupal::config('ra_sanitize_filenames.settings');
+
+    $form['filename_sanitization']['rasf_header'] = [
+      '#type' => 'item',
+      '#markup' => '<hr><strong>Pokročilé odstranění znaků</strong>',
+    ];
+
+    $form['filename_sanitization']['rasf_removable_chars'] = [
+      '#type' => 'textfield',
+      '#title' => t('Znaky k odstranění'),
+      '#default_value' => $config->get('removable_chars'),
+      '#description' => t('Zadejte znaky oddělené mezerou.'),
+    ];
+
+    $replacement_options = [
+      'remove' => t('odstranit'),
+      'space' => t('mezera ( )'),
+      'dash' => t('pomlčka (-)'),
+      'underscore' => t('podtržítko (_)'),
+    ];
+
+    $form['filename_sanitization']['rasf_replacement'] = [
+      '#type' => 'select',
+      '#title' => t('Nahrazení odstraněných znaků'),
+      '#options' => $replacement_options,
+      '#default_value' => $config->get('replacement'),
+    ];
+
+    // Callback přidán na úroveň celého formuláře, aby fungoval i save jádra
+    $form['#submit'][] = '_ra_sanitize_filenames_form_submit';
+  }
+}
+
+/**
+ * Callback for form_alter.
+ */
+function _ra_sanitize_filenames_form_submit(array &$form, FormStateInterface $form_state): void { 
+  // Prvek 'filename_sanitization' má v D11 zapnuté #tree => TRUE, 
+  // hodnoty jsou tedy vnořené uvnitř pole.
+  $fs_values = $form_state->getValue('filename_sanitization') ?? [];
+  
+  $removable_chars = $fs_values['rasf_removable_chars'] ?? $form_state->getValue('rasf_removable_chars') ?? '';
+  $replacement = $fs_values['rasf_replacement'] ?? $form_state->getValue('rasf_replacement') ?? 'remove';
+  
+  \Drupal::service('config.factory')->getEditable('ra_sanitize_filenames.settings')
+    ->set('removable_chars', $removable_chars)
+    ->set('replacement', $replacement)
+    ->save();
+}

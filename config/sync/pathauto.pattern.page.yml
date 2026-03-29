@@ -1,0 +1,22 @@
+uuid: f93ae72d-e869-4881-9736-f42365012037
+langcode: cs
+status: true
+dependencies:
+  module:
+    - node
+id: page
+label: 'Základní stránka'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  9a6d7421-6bf8-4ade-a7a1-ff0c6b195ef6:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 9a6d7421-6bf8-4ade-a7a1-ff0c6b195ef6
+    context_mapping:
+      node: node
+    bundles:
+      page: page
+selection_logic: and
+weight: -5
+relationships: {  }

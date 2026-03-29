@@ -1,0 +1,5 @@
+role:
+  anonymous: default
+  authenticated: default
+  content_editor: default
+  administrator: administrator

@@ -1,0 +1,9 @@
+uuid: eed01157-cabc-41e1-a896-cb1037f28f97
+langcode: cs
+status: true
+dependencies: {  }
+id: cs
+label: Čeština
+direction: ltr
+weight: 0
+locked: false

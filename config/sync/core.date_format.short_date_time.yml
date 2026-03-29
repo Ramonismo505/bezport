@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: short_date_time
+label: 'Short date time'
+locked: false
+pattern: 'd/m/Y - H:i:s'

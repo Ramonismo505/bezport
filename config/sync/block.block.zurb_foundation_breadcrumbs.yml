@@ -1,0 +1,22 @@
+uuid: 879e3be0-2ce4-4e43-8fcf-07287f83efb8
+langcode: cs
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - zurb_foundation
+_core:
+  default_config_hash: F9razTMNH9dD3hmzkpIPTFwJeYqb-XBSgYMGRdB0I68
+id: zurb_foundation_breadcrumbs
+theme: zurb_foundation
+region: header
+weight: -3
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: 'Drobečková navigace'
+  label_display: '0'
+  provider: system
+visibility: {  }

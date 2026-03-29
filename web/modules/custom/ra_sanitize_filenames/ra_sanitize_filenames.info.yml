@@ -1,0 +1,9 @@
+name: 'Ra sanitize filenames'
+type: module
+description: 'Extended filenames sanitization.'
+core_version_requirement: ^11
+configure: system.file_system_settings
+dependencies:
+  - drupal:file
+version: 1.0
+package: 'Ra Solution'

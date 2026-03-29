@@ -1,0 +1,22 @@
+uuid: 682059e4-c04c-40a0-b3ff-4422edc6810f
+langcode: cs
+status: true
+dependencies:
+  theme:
+    - gin
+_core:
+  default_config_hash: BCWhood0xXFQYqxFgL1spXdb9KeIuXH1YvTdjIEedDg
+id: gin_secondary_local_tasks
+theme: gin
+region: pre_content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Sekundární záložky'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

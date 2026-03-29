@@ -1,0 +1,25 @@
+uuid: 796e632d-e671-42f4-8ef1-8ce57f42a6e6
+langcode: cs
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - rabp
+  theme:
+    - bezport
+id: ra_breakpoint_box
+theme: bezport
+region: bottom_support
+weight: 0
+provider: null
+plugin: rabp_block
+settings:
+  id: rabp_block
+  label: 'Ra Breakpoint Box'
+  label_display: '0'
+  provider: rabp
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

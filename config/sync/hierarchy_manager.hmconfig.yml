@@ -1,0 +1,11 @@
+allowed_setup_plugins:
+  hm_setup_menu: hm_setup_menu
+  hm_setup_taxonomy: hm_setup_taxonomy
+setup_plugin_settings:
+  hm_setup_menu:
+    display_profile: jstree_default
+    bundle:
+      main: main
+  hm_setup_taxonomy:
+    display_profile: jstree_default
+    bundle: {  }

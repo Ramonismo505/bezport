@@ -1,0 +1,42 @@
+uuid: ca9c5d4c-f548-4f65-99ca-41f5f024ee9b
+langcode: cs
+status: true
+dependencies: {  }
+id: chiefredactor
+label: 'Profil šéfredaktora'
+description: 'Konfigurace pro šéfredaktory'
+conf:
+  usertab: true
+  extensions: '*'
+  maxsize: 0.0
+  quota: 0.0
+  maxwidth: null
+  maxheight: null
+  replace: 0
+  thumbnail_style: ''
+  thumbnail_grid_style: false
+  ignore_usage: false
+  url_alter: false
+  image_extensions: 'jpg jpeg png gif webp'
+  lazy_dimensions: true
+  folders:
+    -
+      path: imce/uploads
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        create_subfolders: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true
+    -
+      path: imce/blocks
+      permissions:
+        browse_files: true
+        browse_subfolders: true
+        create_subfolders: true
+        upload_files: true
+        delete_files: true
+        delete_subfolders: true
+        resize_images: true

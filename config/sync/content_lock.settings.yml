@@ -1,0 +1,56 @@
+_core:
+  default_config_hash: DDn16ZIbPPieMWTr6v8P3UsJUQy_OY0qy3C4ZD6jP7k
+verbose: true
+types:
+  block_content: {  }
+  entity_subqueue: {  }
+  file: {  }
+  media: {  }
+  menu_link_content: {  }
+  node:
+    '*': '*'
+  path_alias: {  }
+  shortcut: {  }
+  taxonomy_term: {  }
+  user: {  }
+  webform_submission: {  }
+  paragraph: {  }
+types_translation_lock: {  }
+form_op_lock:
+  block_content:
+    mode: 0
+    values: {  }
+  entity_subqueue:
+    mode: 0
+    values: {  }
+  file:
+    mode: 0
+    values: {  }
+  media:
+    mode: 0
+    values: {  }
+  menu_link_content:
+    mode: 0
+    values: {  }
+  node:
+    mode: 0
+    values: {  }
+  path_alias:
+    mode: 0
+    values: {  }
+  shortcut:
+    mode: 0
+    values: {  }
+  taxonomy_term:
+    mode: 0
+    values: {  }
+  user:
+    mode: 0
+    values: {  }
+  webform_submission:
+    mode: 0
+    values: {  }
+  paragraph:
+    mode: 0
+    values: {  }
+timeout: 60

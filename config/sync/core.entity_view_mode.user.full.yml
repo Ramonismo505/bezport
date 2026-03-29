@@ -1,0 +1,13 @@
+uuid: 2a7fb221-5018-45d2-9ee9-ba404eca8112
+langcode: cs
+status: false
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: ZbXunWS_xAvMZXFfinyvClDAb_RCVLt7gAzE3v16E-Q
+id: user.full
+label: 'Uživatelský účet'
+description: ''
+targetEntityType: user
+cache: true

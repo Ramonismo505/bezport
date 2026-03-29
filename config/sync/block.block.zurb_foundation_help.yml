@@ -1,0 +1,22 @@
+uuid: 4273f416-ea6a-4017-a231-8202c52b5a60
+langcode: cs
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - zurb_foundation
+_core:
+  default_config_hash: C56E_bDHzcxDMshZXwecI-cVknewe__rAwYeLmla_wM
+id: zurb_foundation_help
+theme: zurb_foundation
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Nápověda
+  label_display: '0'
+  provider: help
+visibility: {  }

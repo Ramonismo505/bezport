@@ -1,0 +1,29 @@
+uuid: 04039c9d-8d30-419c-936f-c53c2de1c719
+langcode: cs
+status: true
+dependencies:
+  module:
+    - locale
+title: 'Aktualizace překladů'
+id: locale_cron
+weight: 4
+module: locale
+callback: 'locale#cron'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '0+@ 0 * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

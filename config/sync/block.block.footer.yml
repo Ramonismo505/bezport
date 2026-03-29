@@ -1,0 +1,28 @@
+uuid: d1011e83-e1e1-4aca-bf6b-e463da6da2b0
+langcode: cs
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:a9dd1023-b8cd-4775-8616-5a9ccf77dda6'
+  module:
+    - block_content
+    - block_visibility_groups
+  theme:
+    - bezport
+id: footer
+theme: bezport
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:a9dd1023-b8cd-4775-8616-5a9ccf77dda6'
+settings:
+  id: 'block_content:a9dd1023-b8cd-4775-8616-5a9ccf77dda6'
+  label: Patička
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

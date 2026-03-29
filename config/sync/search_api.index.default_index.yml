@@ -1,0 +1,37 @@
+uuid: 44e35e26-c37d-4205-bf95-34f463362160
+langcode: cs
+status: true
+dependencies:
+  config:
+    - search_api.server.db_server
+  module:
+    - node
+id: default_index
+name: 'Default content index'
+description: ''
+read_only: false
+field_settings: {  }
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  custom_value: {  }
+  entity_type: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 250
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: db_server

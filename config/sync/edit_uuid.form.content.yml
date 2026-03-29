@@ -1,0 +1,11 @@
+uuid: c06ed644-adaa-4ead-ad9b-de3b5158897b
+langcode: cs
+status: true
+dependencies: {  }
+id: content
+label: Obsah
+config_type: 0
+config_key: node
+config_value:
+  page: page
+  structural_node: structural_node

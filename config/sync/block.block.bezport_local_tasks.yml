@@ -1,0 +1,20 @@
+uuid: 766d9260-fc25-41a1-a4ac-11937ff0ccef
+langcode: cs
+status: true
+dependencies:
+  theme:
+    - bezport
+id: bezport_local_tasks
+theme: bezport
+region: highlighted
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Záložky
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

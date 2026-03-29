@@ -1,0 +1,25 @@
+uuid: c54d1f14-99b3-4c11-9a79-dfd39645199f
+langcode: cs
+status: true
+dependencies:
+  module:
+    - bezport_tools
+    - block_visibility_groups
+  theme:
+    - bezport
+id: info_above_footer
+theme: bezport
+region: content_bottom
+weight: 0
+provider: null
+plugin: bezport_tools_info_above_footer
+settings:
+  id: bezport_tools_info_above_footer
+  label: 'Info nad patičkou'
+  label_display: '0'
+  provider: bezport_tools
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

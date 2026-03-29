@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: year
+label: Year
+locked: false
+pattern: 'Y'

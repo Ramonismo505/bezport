@@ -1,0 +1,30 @@
+_core:
+  default_config_hash: GUKBlXIBQ2d0H8Q7M_Rqn1Q93tRxLPfs9cG-VeQC9NI
+langcode: cs
+page_title: 'Mapa webu'
+path: /sitemap
+message:
+  value: ''
+  format: plain_text
+plugins:
+  frontpage:
+    base_plugin: frontpage
+    enabled: true
+    weight: 0
+    settings:
+      title: 'Úvodní stránka'
+      rss: ''
+      front_text_override: ''
+    id: frontpage
+    provider: sitemap
+  'menu:main':
+    base_plugin: menu
+    enabled: true
+    weight: 0
+    settings:
+      title: 'Hlavní navigace'
+      show_disabled: false
+      menu_depth: 9
+    id: 'menu:main'
+    provider: sitemap
+include_css: true

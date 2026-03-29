@@ -1,0 +1,8 @@
+uuid: 6b2e08c0-0e80-4863-aeaa-05d761be58ae
+langcode: cs
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: U5VlGjd_SfV0Qm_EfnaynOfc549cNscFAx48JfYoMRI
+id: default
+label: Výchozí

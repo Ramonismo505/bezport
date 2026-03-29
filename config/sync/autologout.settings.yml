@@ -1,0 +1,30 @@
+_core:
+  default_config_hash: ou29sK1fi0MGjbVgsIAp1n-2_yofUuGcszRhDDPwpYo
+langcode: cs
+enabled: true
+timeout: 5400
+max_timeout: 172800
+padding: 300
+logout_regardless_of_activity: false
+no_individual_logout_threshold: true
+role_logout: false
+role_logout_max: false
+redirect_url: /user/login
+include_destination: true
+no_dialog: false
+message: 'Chystáme se vás odhlásit pro nečinnost. Pokud tak učiníme, ztratíte veškerou neuloženou práci. Potřebujete více času?'
+inactivity_message: 'Byli jste odhlášeni z důvodu nečinnosti.'
+inactivity_message_type: status
+modal_width: 450
+enforce_admin: true
+jstimer_format: '%hours%:%mins%:%secs%'
+jstimer_js_load_option: false
+use_alt_logout_method: false
+use_watchdog: true
+dialog_title: 'Upozornění Bezpečnostního portálu KvK '
+disable_buttons: false
+yes_button: Pokračovat
+no_button: 'Odhlásit se'
+whitelisted_ip_addresses: ''
+cookie_secure: false
+cookie_httponly: false

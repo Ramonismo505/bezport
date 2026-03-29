@@ -1,0 +1,324 @@
+uuid: c8ac9afa-9365-4ad2-85b6-afaa089f64c5
+langcode: cs
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor5
+_core:
+  default_config_hash: 4mmJmN8kEiUf9aytnx0QPOORBNL5JaF_ijXRwOm2stg
+format: full_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - undo
+      - redo
+      - findAndReplace
+      - selectAll
+      - '|'
+      - bold
+      - italic
+      - strikethrough
+      - superscript
+      - subscript
+      - nbsp
+      - '|'
+      - alignment
+      - '|'
+      - bulletedList
+      - numberedList
+      - indent
+      - outdent
+      - '|'
+      - imce_image
+      - mediaEmbed
+      - htmlEmbed
+      - insertTemplate
+      - specialCharacters
+      - emoji
+      - drupalInsertImage
+      - '|'
+      - link
+      - anchor
+      - bookmark
+      - imce_link
+      - '|'
+      - blockQuote
+      - horizontalLine
+      - '-'
+      - insertTable
+      - insertTableLayout
+      - tableType
+      - '|'
+      - heading
+      - style
+      - '|'
+      - showblocks
+      - removeFormat
+      - sourceEditing
+      - fullscreen
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+        styles: true
+      multiBlock: true
+    ckeditor5_paste_filter_pasteFilter:
+      enabled: false
+      filters:
+        -
+          enabled: true
+          weight: -10
+          search: '<o:p><\/o:p>'
+          replace: ''
+        -
+          enabled: false
+          weight: -9
+          search: '(<[^>]*) (style="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -8
+          search: '(<[^>]*) (face="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -7
+          search: '(<[^>]*) (class="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -6
+          search: '(<[^>]*) (valign="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -5
+          search: '<font[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -4
+          search: '<\/font>'
+          replace: ''
+        -
+          enabled: true
+          weight: -3
+          search: '<span[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -2
+          search: '<\/span>'
+          replace: ''
+        -
+          enabled: true
+          weight: -1
+          search: '<p>&nbsp;<\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 0
+          search: '<p><\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 1
+          search: '<b><\/b>'
+          replace: ''
+        -
+          enabled: true
+          weight: 2
+          search: '<i><\/i>'
+          replace: ''
+        -
+          enabled: true
+          weight: 3
+          search: '<a name="OLE_LINK[^"]*">(.*?)<\/a>'
+          replace: $1
+    ckeditor5_plugin_pack_emoji_emoji:
+      definitionsUrl: ''
+      dropdownLimit: 6
+      skinTone: default
+      useCustomFont: false
+      version: 16
+    ckeditor5_plugin_pack_empty_block__empty_block:
+      enabled: false
+    ckeditor5_plugin_pack_find_and_replace__find_and_replace:
+      ui_type: dialog
+    ckeditor5_plugin_pack_html_embed__html_embed:
+      previews: true
+      use_purifier: false
+    ckeditor5_plugin_pack_indent_block__indent_block:
+      enabled: true
+    ckeditor5_plugin_pack_layout_table__table_properties:
+      use_default_colors: true
+      use_hex_colors: true
+      default_table_properties:
+        border_style: ''
+        color_picker: hex
+        use_default_border_color: false
+        border_color: '#000000'
+        border_width: ''
+        use_default_bg_color: false
+        bg_color: '#000000'
+        width: ''
+        height: ''
+        alignment: ''
+      default_table_cell_properties:
+        border_style: ''
+        color_picker: hex
+        use_default_border_color: false
+        border_color: '#000000'
+        border_width: ''
+        use_default_bg_color: false
+        bg_color: '#000000'
+        width: ''
+        height: ''
+        text_alignment: left
+        padding: ''
+        vertical_alignment: middle
+      colors: {  }
+      disable_properties: false
+    ckeditor5_plugin_pack_link_attributes__link_attributes:
+      attributes: {  }
+    ckeditor5_plugin_pack_word_count__word_count:
+      word_count_enabled: true
+      word_count_mode: words_chars
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Červený text'
+          element: '<span class="red">'
+        -
+          label: 'Tmavě červený text'
+          element: '<span class="darkred">'
+        -
+          label: 'Světle modrý text'
+          element: '<span class="linkblue">'
+        -
+          label: 'Modrý text'
+          element: '<span class="blue">'
+        -
+          label: 'Tmavomodrý text'
+          element: '<span class="darkblue">'
+        -
+          label: 'Zelený text'
+          element: '<span class="green">'
+        -
+          label: 'Velikost textu 80%'
+          element: '<span class="text-size-80perc">'
+        -
+          label: 'Velikost textu 120%'
+          element: '<span class="text-size-120perc">'
+        -
+          label: 'Podbarvení oranžové'
+          element: '<span class="bg-text bg-orange">'
+        -
+          label: 'Podbarvení červené'
+          element: '<span class="bg-text bg-red">'
+        -
+          label: 'Podbarvení tmavě červené'
+          element: '<span class="bg-text bg-darkred">'
+        -
+          label: 'Podbarvení modré'
+          element: '<span class="bg-text bg-blue">'
+        -
+          label: 'Podbarvení tmavomodré'
+          element: '<span class="bg-text bg-darkblue">'
+        -
+          label: 'Podbarvení zelené'
+          element: '<span class="bg-text bg-green">'
+        -
+          label: 'Podbarvení šedé'
+          element: '<span class="bg-text bg-grey">'
+        -
+          label: 'Podbarvení černé'
+          element: '<span class="bg-text bg-black">'
+        -
+          label: 'Zobrazit jako blok'
+          element: '<span class="display-as-block">'
+        -
+          label: 'Odkaz na vlastní obrázek - colorbox'
+          element: '<a class="colorbox">'
+        -
+          label: 'Tabulka žlutá hlavička'
+          element: '<table class="yellowhead">'
+        -
+          label: 'Tabulka červená hlavička'
+          element: '<table class="redhead">'
+        -
+          label: 'Tabulka šedomodrá hlavička'
+          element: '<table class="slategrayhead">'
+        -
+          label: 'Tabulka fialová hlavička'
+          element: '<table class="violethead">'
+        -
+          label: 'Tabulka modrá hlavička'
+          element: '<table class="bluehead">'
+        -
+          label: 'Tabulka zelená hlavička'
+          element: '<table class="greenhead">'
+        -
+          label: 'Tabulka černá hlavička'
+          element: '<table class="blackhead">'
+        -
+          label: 'Buňka tabulky červená'
+          element: '<td class="redtd">'
+        -
+          label: 'Buňka hlavičky tabulky červená'
+          element: '<th class="redth">'
+        -
+          label: 'Buňka tabulky modrá'
+          element: '<td class="bluetd">'
+        -
+          label: 'Buňka hlavičky tabulky modrá'
+          element: '<th class="blueth">'
+        -
+          label: 'Buňka tabulky černá'
+          element: '<td class="blacktd">'
+        -
+          label: 'Buňka hlavičky tabulky černá'
+          element: '<th class="blackth">'
+        -
+          label: 'Buňka tabulky šedá'
+          element: '<td class="graytd">'
+        -
+          label: 'Buňka hlavičky tabulky šedá'
+          element: '<th class="grayth">'
+        -
+          label: 'Buňka tabulky zelená'
+          element: '<td class="greentd">'
+        -
+          label: 'Buňka hlavičky tabulky zelená'
+          element: '<th class="greenth">'
+    editor_advanced_image_image:
+      disable_balloon: false
+      default_class: ''
+      enabled_attributes:
+        - class
+        - title
+    media_media:
+      allow_view_mode_override: false
+image_upload:
+  status: false

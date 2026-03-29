@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: date_time_dotted_simple
+label: 'Date time dotted simple'
+locked: false
+pattern: 'j.n.Y H:i:s'

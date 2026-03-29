@@ -1,0 +1,9 @@
+uuid: 39d2f688-1325-48b8-9c9f-f4bba52ebd7c
+langcode: cs
+status: true
+dependencies: {  }
+id: jstree_default
+label: 'jsTree Default'
+plugin: hm_display_jstree
+config: '{}'
+confirm: false

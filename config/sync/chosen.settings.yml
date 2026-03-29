@@ -1,0 +1,24 @@
+_core:
+  default_config_hash: zDwqaWPY76K_8TgX6aS789W7nZIEg7lU9MJsoh61bAU
+langcode: cs
+minimum_single: 0
+minimum_multiple: 0
+disable_search_threshold: 0
+minimum_width: 360
+max_shown_results: null
+use_relative_width: false
+jquery_selector: 'select:not([data-drupal-selector^="edit-scheduler-configuration-rules-"]):not([data-drupal-selector="edit-config-value"]):not([data-drupal-selector="edit-setup-plugin-settings-hm-setup-taxonomy-display-profile"]):not([data-drupal-selector="edit-setup-plugin-settings-hm-setup-menu-display-profile"])'
+search_contains: true
+disable_search: false
+allow_single_deselect: false
+allow_mobile: false
+add_helper_buttons: false
+disabled_themes:
+  claro: '0'
+  gin: '0'
+  zurb_foundation: '0'
+  bezport: '0'
+chosen_include: 2
+placeholder_text_multiple: 'Zvolte některé možnosti'
+placeholder_text_single: 'Zvolte možnost'
+no_results_text: 'Nenalezeny výsledky'

@@ -1,0 +1,11 @@
+uuid: 7a13f039-b094-4b56-bbac-93c406d2bc63
+langcode: cs
+status: true
+dependencies:
+  config:
+    - node.type.structural_node
+id: node.structural_node
+target_entity_type_id: node
+target_bundle: structural_node
+default_langcode: site_default
+language_alterable: false

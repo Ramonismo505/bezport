@@ -1,0 +1,20 @@
+uuid: dfb0a110-4327-468f-a1ec-1949b4c445c4
+langcode: cs
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - bezport
+id: help
+theme: bezport
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Nápověda
+  label_display: '0'
+  provider: help
+visibility: {  }

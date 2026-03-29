@@ -1,0 +1,7 @@
+langcode: cs
+status: true
+dependencies: {  }
+id: date_dotted
+label: 'Date dotted'
+locked: false
+pattern: 'j. n. Y'
